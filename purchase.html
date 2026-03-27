@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started — Roadie AI</title>
+    <meta name="description" content="Get your AI artist manager. Tell us about your music and we'll build your Roadie in 24-48 hours.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">
+            <a href="index.html" class="nav-logo">ROADIE<span>.</span></a>
+            <span class="nav-by">by Social Elite</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a href="purchase.html" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero" style="padding: 140px 20px 40px; text-align: center;">
+        <div class="section-inner">
+            <p class="section-tag">Let's Build Your AI</p>
+            <h1 style="font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; margin-bottom: 16px;">
+                Get Your <span style="color: var(--red);">Roadie</span>
+            </h1>
+            <p class="section-subtitle" style="max-width: 550px; margin: 0 auto;">Three steps. That's it. Tell us about your music, pick your plan, and we'll have your AI manager ready in 24-48 hours.</p>
+        </div>
+    </section>
+
+    <!-- STEPS VISUAL -->
+    <section style="padding: 20px 20px 40px;">
+        <div style="max-width: 800px; margin: 0 auto; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+            <div style="text-align: center; flex: 1; min-width: 150px;">
+                <div style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--red); margin-bottom: 8px;">1</div>
+                <p style="font-family: 'Oswald', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Tell Us About You</p>
+            </div>
+            <div style="color: #333; font-size: 2rem; display: flex; align-items: center;">→</div>
+            <div style="text-align: center; flex: 1; min-width: 150px;">
+                <div style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--red); margin-bottom: 8px;">2</div>
+                <p style="font-family: 'Oswald', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Pick Your Plan</p>
+            </div>
+            <div style="color: #333; font-size: 2rem; display: flex; align-items: center;">→</div>
+            <div style="text-align: center; flex: 1; min-width: 150px;">
+                <div style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--red); margin-bottom: 8px;">3</div>
+                <p style="font-family: 'Oswald', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Meet Your Roadie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="section" style="padding-top: 20px;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <form id="onboarding-form" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 48px 40px;">
+
+                <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; color: var(--red);">Step 1 — About Your Music</h3>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px;">Artist / Band Name *</label>
+                    <input type="text" required placeholder="e.g. The Sight Of Impact" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #fff; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; transition: border 0.3s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px;">Genre *</label>
+                    <input type="text" required placeholder="e.g. Pop Punk, Hip Hop, Indie Rock" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #fff; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; transition: border 0.3s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px;">What do you need most? *</label>
+                    <select required style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #ccc; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; appearance: none; cursor: pointer;">
+                        <option value="" disabled selected>Select your biggest need...</option>
+                        <option value="booking">Show Booking & Venue Outreach</option>
+                        <option value="streaming">Streaming Growth & Playlists</option>
+                        <option value="social">Social Media & Content</option>
+                        <option value="ads">Ads & Marketing</option>
+                        <option value="all">All of the above — I need a full manager</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px;">Telegram Username *</label>
+                    <input type="text" required placeholder="@yourusername" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #fff; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; transition: border 0.3s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+                    <p style="font-size: 0.75rem; color: #555; margin-top: 6px;">Your Roadie lives on Telegram. <a href="https://telegram.org" target="_blank" style="color: var(--red);">Don't have it? Download free.</a></p>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px;">Email *</label>
+                    <input type="email" required placeholder="you@email.com" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #fff; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; transition: border 0.3s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'">
+                </div>
+
+                <div style="margin-bottom: 32px;">
+                    <label style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px;">Hosting Preference</label>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <label style="flex: 1; min-width: 200px; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: border 0.3s;" onmouseover="this.style.borderColor='rgba(180,0,0,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+                            <input type="radio" name="hosting" value="hosted" checked style="accent-color: var(--red);">
+                            <div>
+                                <span style="font-size: 0.9rem; color: #ddd;">Hosted by us</span>
+                                <p style="font-size: 0.75rem; color: #555; margin-top: 2px;">We run everything 24/7</p>
+                            </div>
+                        </label>
+                        <label style="flex: 1; min-width: 200px; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: border 0.3s;" onmouseover="this.style.borderColor='rgba(180,0,0,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+                            <input type="radio" name="hosting" value="local" style="accent-color: var(--red);">
+                            <div>
+                                <span style="font-size: 0.9rem; color: #ddd;">Local install ($350)</span>
+                                <p style="font-size: 0.75rem; color: #555; margin-top: 2px;">On your machine, you own it</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 40px;">
+                    <label style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px;">Anything else we should know?</label>
+                    <textarea placeholder="Links to your music, upcoming shows, specific goals..." rows="4" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; color: #fff; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; resize: vertical; transition: border 0.3s;" onfocus="this.style.borderColor='var(--red)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"></textarea>
+                </div>
+
+                <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; color: var(--red);">Step 2 — Pick Your Plan</h3>
+
+                <div style="display: grid; gap: 12px; margin-bottom: 32px;">
+                    <a href="https://buy.stripe.com/4gM9ATeNF6X7gNi4u98bS01" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+                        <div>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Starter</span>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin-top: 4px;">Core AI manager, booking, social, merch</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: #fff;">$200</span>
+                            <p style="font-size: 0.75rem; color: var(--gray);">+ $29/mo hosted</p>
+                        </div>
+                    </a>
+
+                    <a href="https://buy.stripe.com/eVqbJ1axpbdn9kQ8Kp8bS02" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(180,0,0,0.06); border: 2px solid var(--red); border-radius: 6px; text-decoration: none; transition: 0.3s;">
+                        <div>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Pro ⭐ <span style="font-size: 0.7rem; color: var(--red); vertical-align: middle;">RECOMMENDED</span></span>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin-top: 4px;">+ Streaming, playlists, ads, email, press</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: #fff;">$500</span>
+                            <p style="font-size: 0.75rem; color: var(--gray);">+ $49/mo hosted</p>
+                        </div>
+                    </a>
+
+                    <a href="https://buy.stripe.com/6oU6oH5d595fgNigcR8bS03" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; text-decoration: none; transition: 0.3s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+                        <div>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Label 👑</span>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin-top: 4px;">Full suite + landing pages, contracts, festivals</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: #fff;">$1,000</span>
+                            <p style="font-size: 0.75rem; color: var(--gray);">+ $99/mo hosted</p>
+                        </div>
+                    </a>
+                </div>
+
+                <p style="font-size: 0.8rem; color: #444; text-align: center; margin-top: 16px;">After checkout, we'll use the info above to build your Roadie. You'll hear from us on Telegram within 24-48 hours.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04);">
+        <p style="font-size: 0.75rem; color: #333; letter-spacing: 1px;">© 2026 Roadie AI by Social Elite Marketing Group. All rights reserved.</p>
+        <div style="margin-top: 12px; display: flex; justify-content: center; gap: 20px;">
+            <a href="index.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">Home</a>
+            <a href="about.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">About</a>
+            <a href="faq.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">FAQ</a>
+            <a href="mailto:boris@socialelitemarketinggroup.com" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">Contact</a>
+        </div>
+    </footer>
+</body>
+</html>
