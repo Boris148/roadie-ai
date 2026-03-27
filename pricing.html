@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing — Roadie AI</title>
     <meta name="description" content="Choose your Roadie AI plan. From $200 setup. Your own AI artist manager that never sleeps.">
+    <meta property="og:title" content="Pricing — Roadie AI">
+    <meta property="og:description" content="Choose your Roadie AI plan that suits your needs and budget.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,6 +15,9 @@
             <a href="index.html" class="nav-logo">ROADIE<span>.</span></a>
             <span class="nav-by">by Social Elite</span>
         </div>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="pricing.html">Pricing</a>
@@ -23,78 +28,76 @@
     </nav>
 
     <!-- HERO -->
-    <section class="page-hero" style="padding: 140px 20px 60px; text-align: center;">
-        <div class="section-inner">
+    <section class="page-hero">
+        <div class="page-hero-content">
             <p class="section-tag">Simple Pricing</p>
-            <h1 style="font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; margin-bottom: 16px;">
-                Pick Your <span style="color: var(--red);">Tier</span>
-            </h1>
-            <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">One-time setup. Optional monthly hosting. No commission on your music. No contracts. Cancel anytime.</p>
+            <h1>Pick Your <span>Tier</span></h1>
+            <p>One-time setup. Optional monthly hosting. No commission on your music. No contracts. Cancel anytime.</p>
         </div>
     </section>
 
     <!-- PRICING TIERS -->
-    <section class="section" style="padding-top: 40px;">
+    <section class="section">
         <div style="max-width: 1100px; margin: 0 auto;">
-            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px;">
+            <div class="pricing-grid" style="margin-bottom: 60px;">
 
                 <!-- STARTER -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 40px 32px; position: relative;">
-                    <p style="font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Starter</p>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 800; margin-bottom: 4px;">$200</h3>
-                    <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 6px;">one-time setup</p>
-                    <p style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $29<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></p>
-                    <ul style="list-style: none; margin-bottom: 32px;">
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> AI Artist Manager</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Show Booking & Outreach</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Social Media Engine</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Merch & Finances</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Memory & Personality</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Hosted 24/7</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Telegram Access</li>
+                <div class="price-card">
+                    <div class="tier-name">Starter</div>
+                    <div class="tier-price">$200</div>
+                    <div class="tier-note">one-time setup</div>
+                    <div class="tier-cost" style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $29<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></div>
+                    <ul>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> AI Artist Manager</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Show Booking & Outreach</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Social Media Engine</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Merch & Finances</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Memory & Personality</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Hosted 24/7</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Telegram Access</li>
                     </ul>
-                    <a href="https://buy.stripe.com/4gM9ATeNF6X7gNi4u98bS01" class="btn-primary" style="display: block; text-align: center; padding: 16px; font-size: 0.95rem;">Get Starter</a>
+                    <a href="purchase.html" class="btn-primary">Get Starter</a>
                 </div>
 
                 <!-- PRO (Featured) -->
-                <div class="pricing-card" style="background: rgba(180,0,0,0.06); border: 2px solid var(--red); border-radius: 8px; padding: 40px 32px; position: relative; transform: scale(1.03);">
-                    <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--red); padding: 6px 24px; font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; border-radius: 20px;">Most Popular</div>
-                    <p style="font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 8px;">Pro ⭐</p>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 800; margin-bottom: 4px;">$500</h3>
-                    <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 6px;">one-time setup</p>
-                    <p style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $49<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></p>
-                    <ul style="list-style: none; margin-bottom: 32px;">
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Everything in Starter</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">🔥</span> Streaming Analytics</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">🔥</span> Playlist Pitching</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">🔥</span> Meta & YouTube Ads</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">🔥</span> Release Planning</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">🔥</span> Email Marketing</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">🔥</span> Press Kit / EPK</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Career Memory</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Evolving Personality</li>
+                <div class="price-card featured">
+                    <div class="badge">Most Popular</div>
+                    <div class="tier-name">Pro</div>
+                    <div class="tier-price">$500</div>
+                    <div class="tier-note">one-time setup</div>
+                    <div class="tier-cost" style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $49<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></div>
+                    <ul>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Everything in Starter</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Streaming Analytics</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Playlist Pitching</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Meta & YouTube Ads</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Release Planning</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Email Marketing</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Press Kit / EPK</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Career Memory</li>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Evolving Personality</li>
                     </ul>
-                    <a href="https://buy.stripe.com/eVqbJ1axpbdn9kQ8Kp8bS02" class="btn-primary" style="display: block; text-align: center; padding: 16px; font-size: 0.95rem;">Get Pro</a>
+                    <a href="purchase.html" class="btn-primary">Get Pro</a>
                 </div>
 
                 <!-- LABEL -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 40px 32px; position: relative;">
-                    <p style="font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px;">Label</p>
-                    <h3 style="font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 800; margin-bottom: 4px;">$1,000</h3>
-                    <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 6px;">one-time setup</p>
-                    <p style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $99<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></p>
-                    <ul style="list-style: none; margin-bottom: 32px;">
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #bbb; display: flex; gap: 10px;"><span style="color: var(--red);">✓</span> Everything in Pro</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Custom Landing Pages</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Full Ad Management</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Contract Templates</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Sync Licensing Help</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Multi-Artist Support</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Festival Submissions</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Self-Evolving AI Brain</li>
-                        <li style="padding: 8px 0; font-size: 0.9rem; color: #fff; font-weight: 500; display: flex; gap: 10px;"><span style="color: var(--red);">👑</span> Proactive Opportunities</li>
+                <div class="price-card">
+                    <div class="tier-name">Label</div>
+                    <div class="tier-price">$1,000</div>
+                    <div class="tier-note">one-time setup</div>
+                    <div class="tier-cost" style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $99<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></div>
+                    <ul>
+                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Everything in Pro</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Custom Landing Pages</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Full Ad Management</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Contract Templates</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Sync Licensing Help</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Multi-Artist Support</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Festival Submissions</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Self-Evolving AI Brain</li>
+                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Proactive Opportunities</li>
                     </ul>
-                    <a href="https://buy.stripe.com/6oU6oH5d595fgNigcR8bS03" class="btn-primary" style="display: block; text-align: center; padding: 16px; font-size: 0.95rem;">Get Label</a>
+                    <a href="purchase.html" class="btn-primary">Get Label</a>
                 </div>
             </div>
 
@@ -107,41 +110,41 @@
             </div>
 
             <!-- ADD-ONS -->
-            <div style="max-width: 800px; margin: 0 auto 80px;">
+            <div style="max-width: 900px; margin: 0 auto 80px;">
                 <div style="text-align: center; margin-bottom: 40px;">
                     <p class="section-tag">Power-Ups</p>
                     <h2 style="font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase;">Add-Ons</h2>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-                    <div style="background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 24px;">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">🧠</div>
-                        <h4 style="font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Premium Brain</h4>
-                        <p style="font-family: 'Oswald', sans-serif; color: var(--red); font-size: 1.1rem; margin-bottom: 6px;">+$15/mo</p>
-                        <p style="font-size: 0.8rem; color: var(--gray);">Better creative writing, smarter conversations. Powered by Sonnet.</p>
+                <div class="addon-grid">
+                    <div class="addon-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#129504;</div>
+                        <h4>Premium Brain</h4>
+                        <div class="addon-price">+$15/mo</div>
+                        <p>Better creative writing, smarter conversations. Powered by Sonnet.</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 24px;">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">⚡</div>
-                        <h4 style="font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Ultimate Brain</h4>
-                        <p style="font-family: 'Oswald', sans-serif; color: var(--red); font-size: 1.1rem; margin-bottom: 6px;">+$50/mo</p>
-                        <p style="font-size: 0.8rem; color: var(--gray);">The best AI brain available. Deep reasoning, incredible personality. Opus-level.</p>
+                    <div class="addon-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#9889;</div>
+                        <h4>Ultimate Brain</h4>
+                        <div class="addon-price">+$50/mo</div>
+                        <p>The best AI brain available. Deep reasoning, incredible personality. Opus-level.</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 24px;">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">🎙️</div>
-                        <h4 style="font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Voice Messages</h4>
-                        <p style="font-family: 'Oswald', sans-serif; color: var(--red); font-size: 1.1rem; margin-bottom: 6px;">+$20/mo</p>
-                        <p style="font-size: 0.8rem; color: var(--gray);">Your Roadie talks back. Voice messages on Telegram via ElevenLabs.</p>
+                    <div class="addon-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#127908;</div>
+                        <h4>Voice Messages</h4>
+                        <div class="addon-price">+$20/mo</div>
+                        <p>Your Roadie talks back. Voice messages on Telegram via ElevenLabs.</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 24px;">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">🎤</div>
-                        <h4 style="font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Voice Clone</h4>
-                        <p style="font-family: 'Oswald', sans-serif; color: var(--red); font-size: 1.1rem; margin-bottom: 6px;">$50 one-time</p>
-                        <p style="font-size: 0.8rem; color: var(--gray);">Clone your voice or create a unique custom voice for your AI.</p>
+                    <div class="addon-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#128270;</div>
+                        <h4>Priority Support</h4>
+                        <div class="addon-price">+$25/mo</div>
+                        <p>Direct line to the Social Elite team. Priority setup, tuning, and troubleshooting.</p>
                     </div>
-                    <div style="background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 24px;">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">🌐</div>
-                        <h4 style="font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Extra Landing Pages</h4>
-                        <p style="font-family: 'Oswald', sans-serif; color: var(--red); font-size: 1.1rem; margin-bottom: 6px;">$50/page</p>
-                        <p style="font-size: 0.8rem; color: var(--gray);">Custom show/event pages like we build for tours. Ticket links, countdowns, the works.</p>
+                    <div class="addon-card">
+                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#128640;</div>
+                        <h4>Ad Management</h4>
+                        <div class="addon-price">+$30/mo</div>
+                        <p>Meta, YouTube, and TikTok ad campaigns fully managed by your AI. Targeting, creative, and optimization included.</p>
                     </div>
                 </div>
             </div>
@@ -150,23 +153,22 @@
 
     <!-- CTA -->
     <section class="cta-section">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('stage-lights.jpg') center/cover no-repeat; filter: brightness(0.1); z-index: 0;"></div>
-        <div class="cta-content" style="position: relative; z-index: 1;">
-            <h2 style="font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; text-transform: uppercase; margin-bottom: 16px;">Ready to Get <span style="color: var(--red);">Your Manager</span>?</h2>
-            <p style="color: var(--gray); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">Stop doing everything yourself. Let your AI handle the grind while you focus on the music.</p>
+        <div class="cta-content">
+            <h2>Ready to Get <span>Your Manager</span>?</h2>
+            <p>Stop doing everything yourself. Let your AI handle the grind while you focus on the music.</p>
             <a href="purchase.html" class="btn-primary">Get Started Now</a>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04);">
-        <p style="font-size: 0.75rem; color: #333; letter-spacing: 1px;">© 2026 Roadie AI by Social Elite Marketing Group. All rights reserved.</p>
-        <div style="margin-top: 12px; display: flex; justify-content: center; gap: 20px;">
-            <a href="index.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">Home</a>
-            <a href="about.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">About</a>
-            <a href="faq.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">FAQ</a>
-            <a href="mailto:boris@socialelitemarketinggroup.com" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">Contact</a>
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a href="purchase.html">Get Started</a>
         </div>
+        <p>&copy; 2026 Roadie AI &middot; A <a href="https://socialelitemarketinggroup.com">Social Elite</a> Product &middot; Built for the independent music grind</p>
     </footer>
 </body>
 </html>
