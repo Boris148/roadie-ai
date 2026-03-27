@@ -243,10 +243,26 @@
     </div>
 </section>
 
-<!-- MASCOT -->
-<section class="section" style="text-align:center; padding: 60px 20px;">
-    <img src="roadie-mascot-final.jpg" alt="Roadie AI Mascot" style="width:320px; max-width:70vw; margin:0 auto; filter: drop-shadow(0 0 60px rgba(180,0,0,0.4)); animation: float 3s ease-in-out infinite; border-radius: 12px;">
-    <style>@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }</style>
+<!-- 3D MASCOT -->
+<section class="section" style="text-align:center; padding: 40px 20px 60px;">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <model-viewer
+        src="roadie-3d.glb"
+        alt="Roadie AI 3D Mascot"
+        auto-rotate
+        auto-rotate-delay="0"
+        rotation-per-second="30deg"
+        camera-controls
+        touch-action="pan-y"
+        interaction-prompt="none"
+        shadow-intensity="0.4"
+        shadow-softness="0.8"
+        exposure="1.1"
+        style="width:400px; height:450px; max-width:90vw; margin:0 auto; --poster-color:transparent;"
+    >
+        <div slot="poster" style="display:flex;align-items:center;justify-content:center;height:100%;color:#b40000;font-family:'Oswald',sans-serif;letter-spacing:3px;">LOADING 3D MODEL...</div>
+    </model-viewer>
+    <p style="font-size:0.75rem; color:#444; margin-top:12px; letter-spacing:1px;">🖱️ Drag to rotate &middot; Scroll to zoom</p>
 </section>
 
 <!-- PRICING TIERS -->
