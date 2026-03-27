@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadie — AI Artist Manager for Independent Musicians</title>
+    <meta name="description" content="Your own AI manager that books shows, handles outreach, manages merch, and grows your fanbase. 24/7. No commission. $200 one-time.">
+    <meta property="og:title" content="Roadie — AI Artist Manager">
+    <meta property="og:description" content="Stop doing everything yourself. Get an AI manager that actually works.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --red: #b40000; --red-light: #ff1a1a; --dark: #0a0a0a; --gray: #888; --light: #f0f0f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--dark); color: var(--light); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(10,10,10,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; color: var(--red); }
+        .nav-cta { padding: 10px 24px; background: var(--red); color: #fff; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer; }
+        .nav-cta:hover { background: var(--red-light); }
+
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 80px; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 30% 0%, rgba(180,0,0,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 100%, rgba(180,0,0,0.08) 0%, transparent 60%); }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-tag { font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 20px; font-weight: 500; }
+        .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 800; text-transform: uppercase; line-height: 1.05; margin-bottom: 24px; }
+        .hero h1 span { color: var(--red); }
+        .hero-sub { font-size: 1.15rem; color: var(--gray); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300; }
+        .hero-price { font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; }
+        .hero-price-note { font-size: 0.9rem; color: var(--gray); margin-bottom: 32px; }
+        .hero-btn { display: inline-block; padding: 18px 60px; background: var(--red); color: #fff; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer; }
+        .hero-btn:hover { background: var(--red-light); transform: scale(1.03); }
+        .hero-proof { margin-top: 40px; font-size: 0.8rem; color: #555; letter-spacing: 1px; }
+
+        /* PROBLEM */
+        .problem { padding: 100px 20px; max-width: 800px; margin: 0 auto; }
+        .section-tag { font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; font-weight: 600; }
+        .problem h2 { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 32px; line-height: 1.2; }
+        .pain-list { list-style: none; }
+        .pain-list li { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 1.05rem; color: #ccc; display: flex; align-items: flex-start; gap: 12px; }
+        .pain-list li::before { content: '✕'; color: var(--red); font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
+
+        /* SOLUTION */
+        .solution { padding: 100px 20px; background: linear-gradient(180deg, rgba(180,0,0,0.04) 0%, transparent 100%); }
+        .solution-inner { max-width: 800px; margin: 0 auto; }
+        .solution h2 { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 40px; line-height: 1.2; text-align: center; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .feature { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 32px; transition: 0.3s; }
+        .feature:hover { border-color: var(--red); background: rgba(180,0,0,0.04); }
+        .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+        .feature h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .feature p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+
+        /* HOW IT WORKS */
+        .how { padding: 100px 20px; max-width: 800px; margin: 0 auto; }
+        .how h2 { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 40px; text-align: center; }
+        .steps { counter-reset: step; }
+        .step { display: flex; gap: 24px; padding: 32px 0; border-bottom: 1px solid rgba(255,255,255,0.06); align-items: flex-start; }
+        .step-num { counter-increment: step; font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--red); line-height: 1; flex-shrink: 0; width: 50px; }
+        .step-num::before { content: counter(step); }
+        .step h3 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .step p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+
+        /* WHAT YOU GET */
+        .stack { padding: 100px 20px; background: linear-gradient(180deg, transparent 0%, rgba(180,0,0,0.04) 100%); }
+        .stack-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+        .stack h2 { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-transform: uppercase; margin-bottom: 40px; }
+        .stack-items { text-align: left; }
+        .stack-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .stack-item span:first-child { font-size: 1rem; color: #ccc; }
+        .stack-item span:last-child { font-family: 'Oswald', sans-serif; font-size: 1rem; color: var(--gray); text-decoration: line-through; }
+        .stack-total { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; margin-top: 16px; border-top: 2px solid var(--red); }
+        .stack-total span:first-child { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .stack-total span:last-child { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 800; color: var(--red); }
+        .stack-note { text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--gray); }
+
+        /* CTA */
+        .cta { padding: 100px 20px; text-align: center; }
+        .cta h2 { font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; margin-bottom: 16px; }
+        .cta h2 span { color: var(--red); }
+        .cta p { font-size: 1rem; color: var(--gray); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-btn { display: inline-block; padding: 20px 70px; background: var(--red); color: #fff; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 1.3rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; }
+        .cta-btn:hover { background: var(--red-light); transform: scale(1.03); }
+        .guarantee { margin-top: 24px; font-size: 0.85rem; color: #555; }
+
+        /* FAQ */
+        .faq { padding: 80px 20px; max-width: 700px; margin: 0 auto; }
+        .faq h2 { font-family: 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; text-align: center; color: var(--gray); }
+        .faq-item { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .faq-q { font-weight: 600; font-size: 1rem; margin-bottom: 8px; color: #ddd; }
+        .faq-a { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer p { color: #333; font-size: 0.75rem; letter-spacing: 1px; }
+
+        @media (max-width: 600px) {
+            nav { padding: 12px 16px; }
+            .hero { padding: 100px 16px 60px; }
+            .step { flex-direction: column; gap: 12px; }
+            .step-num { width: auto; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">ROADIE</div>
+    <a href="#pricing" class="nav-cta">Get Roadie — $200</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-tag">AI Artist Manager</div>
+        <h1>Stop being your own <span>manager,</span> merch guy, social media intern, <span>and booking agent</span></h1>
+        <p class="hero-sub">Roadie is your personal AI manager that handles venue outreach, show logistics, social media, merch tracking, and fan engagement — 24/7. No commission. No contracts. Just results.</p>
+        <div class="hero-price">$200</div>
+        <p class="hero-price-note">One-time setup. No monthly fees. No commission. Ever.</p>
+        <a href="#pricing" class="hero-btn">Get Your Roadie</a>
+        <p class="hero-proof">Built by musicians, for musicians. Already managing shows across Texas.</p>
+    </div>
+</section>
+
+<section class="problem">
+    <div class="section-tag">The Problem</div>
+    <h2>You started a band to play music. Now you spend more time on emails than riffs.</h2>
+    <ul class="pain-list">
+        <li>You're the songwriter, the booking agent, the social media manager, AND the merch guy</li>
+        <li>Venue emails go unanswered because you're working your day job</li>
+        <li>You forget to promote shows until 2 days before</li>
+        <li>You have no idea how much merch you actually sold last month</li>
+        <li>You know you should be posting more but who has the time</li>
+        <li>Real management won't touch you until you're already big</li>
+        <li>You're burning out doing everything yourself</li>
+    </ul>
+</section>
+
+<section class="solution">
+    <div class="solution-inner">
+        <div class="section-tag">The Solution</div>
+        <h2>Meet Roadie. Your AI that actually does the work.</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📧</div>
+                <h3>Venue Outreach</h3>
+                <p>Drafts professional booking emails personalized to each venue. Follows up automatically. You just approve and send.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📅</div>
+                <h3>Show Management</h3>
+                <p>Tracks every gig — load-in times, set times, gear lists, travel. Reminds you before every show so nothing falls through the cracks.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Social Media</h3>
+                <p>Content ideas, captions, posting schedules, engagement strategies. Keeps your socials alive between shows without you stressing about it.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👕</div>
+                <h3>Merch Tracking</h3>
+                <p>Knows your inventory, tracks sales, suggests restocks before shows. No more showing up with 50 XL shirts and zero mediums.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎤</div>
+                <h3>Setlist Planning</h3>
+                <p>Organizes your songs, builds setlists for different show types, tracks what you played where so you never repeat at the same venue.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔍</div>
+                <h3>Opportunity Finder</h3>
+                <p>Finds festival submissions, playlist curators, press contacts, and opening slots for touring acts in your area. Opportunities you'd never find on your own.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Money Tracking</h3>
+                <p>Logs show pay, merch revenue, expenses. Know exactly where your band's money is going without a spreadsheet.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <h3>Gets Smarter Daily</h3>
+                <p>Roadie learns your preferences, your scene, your goals. The longer you use it, the better it gets. Like a manager who actually pays attention.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how">
+    <div class="section-tag">How It Works</div>
+    <h2>Live in 24 hours. Text-based. Zero tech skills needed.</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-num"></div>
+            <div>
+                <h3>Quick Setup Call</h3>
+                <p>10-minute call where we learn about your band, your goals, and how you work. We handle all the technical setup.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div>
+                <h3>We Build Your Roadie</h3>
+                <p>We customize your AI with your band's info, shows, merch, venues, and goals. Pre-loaded and ready to work from day one.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num"></div>
+            <div>
+                <h3>Text Your Manager</h3>
+                <p>Open Telegram on your phone and start texting Roadie. Ask it anything, give it tasks, or just let it work in the background. It's that simple.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stack" id="pricing">
+    <div class="stack-inner">
+        <div class="section-tag">What You Get</div>
+        <h2>Everything a manager does. For $200. Once.</h2>
+        <div class="stack-items">
+            <div class="stack-item"><span>✅ Personal AI manager on your phone (Telegram)</span><span>$500/mo</span></div>
+            <div class="stack-item"><span>✅ Venue outreach & booking system</span><span>$300/mo</span></div>
+            <div class="stack-item"><span>✅ Show management & logistics tracker</span><span>$200/mo</span></div>
+            <div class="stack-item"><span>✅ Social media content assistant</span><span>$400/mo</span></div>
+            <div class="stack-item"><span>✅ Merch inventory & sales tracking</span><span>$100/mo</span></div>
+            <div class="stack-item"><span>✅ Setlist planner</span><span>$50/mo</span></div>
+            <div class="stack-item"><span>✅ Opportunity finder (festivals, playlists, press)</span><span>$300/mo</span></div>
+            <div class="stack-item"><span>✅ Financial tracking</span><span>$100/mo</span></div>
+            <div class="stack-item"><span>✅ Custom show landing pages</span><span>$500</span></div>
+            <div class="stack-item"><span>✅ Emotional AI that learns your style</span><span>Priceless</span></div>
+        </div>
+        <div class="stack-total">
+            <span>Your Price</span>
+            <span>$200</span>
+        </div>
+        <p class="stack-note">One-time payment. No monthly fees. No commission on shows. No contracts. Cancel anytime (it's on your computer).</p>
+        <br><br>
+        <a href="https://buy.stripe.com/test_placeholder" class="hero-btn" style="display:inline-block; margin-top: 16px;">Get Your Roadie — $200</a>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Your band deserves a <span>manager.</span><br>Now you can afford one.</h2>
+    <p>Real management takes 15-20% of everything you make. Roadie takes $200 once and works harder than any of them.</p>
+    <a href="https://buy.stripe.com/test_placeholder" class="cta-btn">Get Roadie Now</a>
+    <p class="guarantee">🛡️ Not happy? Full refund within 7 days. No questions.</p>
+</section>
+
+<section class="faq">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+        <div class="faq-q">Do I need to be technical?</div>
+        <div class="faq-a">Nope. We handle all the setup. You just text your Roadie on Telegram like you'd text a bandmate. If you can send a text message, you can use Roadie.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">What do I need to run it?</div>
+        <div class="faq-a">A Mac or PC that stays on, and a free Telegram account on your phone. That's it. No subscriptions, no special hardware.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">Is this just ChatGPT?</div>
+        <div class="faq-a">No. ChatGPT answers questions. Roadie takes action. It manages your shows, drafts your emails, tracks your merch, and proactively reminds you about stuff. It's an actual manager, not a chatbot.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">Does it actually book shows for me?</div>
+        <div class="faq-a">It drafts personalized booking emails, finds venues in your area, and follows up — but you approve everything before it sends. You stay in control, it does the grunt work.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">What genres does it work for?</div>
+        <div class="faq-a">Any genre. Rock, metal, hip-hop, indie, country, electronic — Roadie adapts to your scene and your market. It learns your world.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">Is my data private?</div>
+        <div class="faq-a">100%. Roadie runs on YOUR computer. Your data never leaves your machine. No cloud storage, no third-party access, no data selling. It's yours.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">What if I don't like it?</div>
+        <div class="faq-a">Full refund within 7 days. No questions asked. We're musicians too — we get it.</div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Roadie AI &middot; Built for the independent music grind</p>
+</footer>
+
+</body>
+</html>
