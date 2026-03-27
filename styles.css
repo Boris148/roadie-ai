@@ -620,3 +620,22 @@ footer a { color: #555; text-decoration: none; }
     .faq-grid { grid-template-columns: 1fr; }
     .addon-grid { grid-template-columns: 1fr; }
 }
+
+/* Artist Pill Badges */
+.artist-pill {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+.artist-pill:hover {
+    background: rgba(180,0,0,0.15);
+    border-color: var(--red);
+    color: #fff;
+}
