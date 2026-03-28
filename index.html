@@ -9,7 +9,7 @@
     <meta property="og:description" content="Stop doing everything yourself. Get an AI manager that actually works. $200. No commission. No contracts.">
     <link rel="stylesheet" href="styles.css">
     <script src="https://elevenlabs.io/convai-widget/index.js" async></script>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+
 </head>
 <body>
     <nav>
@@ -39,76 +39,104 @@
             <p class="hero-price-note">One-time setup &middot; From $29/mo hosted &middot; No commission. Ever.</p>
             <a href="purchase.html" class="btn-primary">Get Your Roadie</a>
 
-            <!-- 3D ROADIE + VOICE AGENT -->
-            <div id="roadie-3d-agent" style="margin-top: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                <div style="position: relative; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; background: radial-gradient(ellipse at center, rgba(180,0,0,0.08) 0%, rgba(10,10,10,0.95) 70%); overflow: hidden; padding: 20px;">
-                    <!-- 3D Model Viewer -->
-                    <model-viewer
-                        id="roadie-model"
-                        src="roadie-3d-compressed.glb"
-                        alt="Roadie AI 3D Model"
-                        auto-rotate
-                        auto-rotate-delay="0"
-                        rotation-per-second="15deg"
-                        camera-controls
-                        interaction-prompt="none"
-                        shadow-intensity="0.5"
-                        exposure="1.2"
-                        style="width: 100%; height: 300px; --poster-color: transparent; background: transparent;"
-                        camera-orbit="0deg 80deg 2m"
-                        min-camera-orbit="auto auto auto"
-                        max-camera-orbit="auto auto auto"
-                        field-of-view="30deg"
-                    ></model-viewer>
+            <!-- MEET ROADIE — IMMERSIVE VOICE EXPERIENCE -->
+            <div id="meet-roadie" style="margin-top: 40px; max-width: 420px; margin-left: auto; margin-right: auto; text-align: center;">
+                <div style="position: relative; border: 1px solid rgba(180,0,0,0.2); border-radius: 20px; background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, rgba(30,0,0,0.3) 100%); overflow: hidden; padding: 0;">
                     
-                    <!-- Glow effect behind model -->
-                    <div id="voice-glow" style="position: absolute; top: 50%; left: 50%; width: 200px; height: 200px; transform: translate(-50%, -60%); border-radius: 50%; background: radial-gradient(circle, rgba(180,0,0,0.3) 0%, transparent 70%); pointer-events: none; transition: opacity 0.3s; opacity: 0.3;"></div>
+                    <!-- Roadie Face — looking straight at you -->
+                    <div id="roadie-portrait" style="position: relative; overflow: hidden;">
+                        <img src="roadie-face.jpg" alt="Roadie AI" style="width: 100%; display: block; mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);">
+                        
+                        <!-- Eye glow overlay — pulses when speaking -->
+                        <div id="eye-glow" style="position: absolute; top: 28%; left: 50%; width: 120px; height: 30px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse, rgba(180,0,0,0.4) 0%, transparent 70%); pointer-events: none; opacity: 0.5; transition: all 0.3s;"></div>
+                        
+                        <!-- Audio visualizer bars overlay -->
+                        <div id="audio-bars" style="position: absolute; bottom: 25%; left: 50%; transform: translateX(-50%); display: flex; gap: 3px; align-items: flex-end; height: 40px; opacity: 0; transition: opacity 0.5s;">
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 8px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 15px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 22px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 30px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 18px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 25px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 12px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 20px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 28px; transition: height 0.1s;"></div>
+                            <div class="bar" style="width: 4px; background: #b40000; border-radius: 2px; height: 10px; transition: height 0.1s;"></div>
+                        </div>
+                    </div>
                     
-                    <!-- Voice Agent Widget -->
-                    <div style="text-align: center; margin-top: 8px;">
-                        <p style="font-size: 0.7rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">🎙️ Talk to Roadie</p>
+                    <!-- Voice interaction area -->
+                    <div style="padding: 0 24px 24px; position: relative; z-index: 2; margin-top: -30px;">
+                        <p id="roadie-status" style="font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: var(--red); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px;">Meet Roadie</p>
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-bottom: 16px;">Your AI artist manager is ready to talk</p>
+                        
                         <elevenlabs-convai agent-id="agent_2601kmsn9g4zep9t73h1qe7ycgj3"></elevenlabs-convai>
-                        <p style="font-size: 0.6rem; color: rgba(255,255,255,0.2); margin-top: 6px;">Click the mic • Have a real conversation • Get a personalized plan</p>
+                        
+                        <p style="font-size: 0.6rem; color: rgba(255,255,255,0.2); margin-top: 12px; line-height: 1.6;">Click the mic to start a conversation<br>Roadie will learn about your music and recommend a plan</p>
                     </div>
                 </div>
             </div>
 
             <script>
-            // Pulse the glow and speed up rotation when voice is active
+            // Animate Roadie when voice is active
             (function() {
-                var glow = document.getElementById('voice-glow');
-                var model = document.getElementById('roadie-model');
-                var speaking = false;
+                var eyeGlow = document.getElementById('eye-glow');
+                var audioBars = document.getElementById('audio-bars');
+                var bars = document.querySelectorAll('#audio-bars .bar');
+                var status = document.getElementById('roadie-status');
+                var portrait = document.getElementById('roadie-portrait');
+                var isActive = false;
+                var barInterval;
                 
-                // Watch for ElevenLabs widget state changes
+                function animateBars() {
+                    bars.forEach(function(bar) {
+                        bar.style.height = (Math.random() * 35 + 5) + 'px';
+                    });
+                }
+                
+                function activate() {
+                    if (isActive) return;
+                    isActive = true;
+                    eyeGlow.style.opacity = '1';
+                    eyeGlow.style.width = '160px';
+                    eyeGlow.style.background = 'radial-gradient(ellipse, rgba(180,0,0,0.7) 0%, transparent 70%)';
+                    audioBars.style.opacity = '0.8';
+                    status.textContent = 'Roadie is listening...';
+                    status.style.animation = 'statusPulse 2s ease-in-out infinite';
+                    portrait.style.filter = 'brightness(1.15)';
+                    barInterval = setInterval(animateBars, 120);
+                }
+                
+                function deactivate() {
+                    if (!isActive) return;
+                    isActive = false;
+                    eyeGlow.style.opacity = '0.5';
+                    eyeGlow.style.width = '120px';
+                    eyeGlow.style.background = 'radial-gradient(ellipse, rgba(180,0,0,0.4) 0%, transparent 70%)';
+                    audioBars.style.opacity = '0';
+                    status.textContent = 'Meet Roadie';
+                    status.style.animation = 'none';
+                    portrait.style.filter = 'brightness(1)';
+                    if (barInterval) clearInterval(barInterval);
+                }
+                
+                // Monitor ElevenLabs widget
                 setInterval(function() {
                     var widget = document.querySelector('elevenlabs-convai');
                     if (widget && widget.shadowRoot) {
-                        var activeEl = widget.shadowRoot.querySelector('[class*="active"], [class*="speaking"], [class*="listening"]');
-                        if (activeEl) {
-                            if (!speaking) {
-                                speaking = true;
-                                glow.style.opacity = '0.8';
-                                glow.style.animation = 'voicePulse 1s ease-in-out infinite';
-                                model.setAttribute('rotation-per-second', '30deg');
-                            }
-                        } else {
-                            if (speaking) {
-                                speaking = false;
-                                glow.style.opacity = '0.3';
-                                glow.style.animation = 'none';
-                                model.setAttribute('rotation-per-second', '15deg');
-                            }
-                        }
+                        var active = widget.shadowRoot.querySelector('[class*="active"], [class*="speaking"], [class*="listening"], [class*="recording"]');
+                        if (active) { activate(); } else { deactivate(); }
                     }
-                }, 500);
+                }, 300);
             })();
             </script>
             <style>
-                @keyframes voicePulse {
-                    0%, 100% { opacity: 0.4; transform: translate(-50%, -60%) scale(1); }
-                    50% { opacity: 0.9; transform: translate(-50%, -60%) scale(1.15); }
+                @keyframes statusPulse {
+                    0%, 100% { opacity: 0.7; }
+                    50% { opacity: 1; }
                 }
+                #roadie-portrait { transition: filter 0.5s ease; }
+                #meet-roadie:hover #eye-glow { opacity: 0.7 !important; }
             </style>
         </div>
     </section>
