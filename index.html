@@ -9,6 +9,7 @@
     <meta property="og:description" content="Stop doing everything yourself. Get an AI manager that actually works. $200. No commission. No contracts.">
     <link rel="stylesheet" href="styles.css">
     <script src="https://elevenlabs.io/convai-widget/index.js" async></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
     <nav>
@@ -38,12 +39,77 @@
             <p class="hero-price-note">One-time setup &middot; From $29/mo hosted &middot; No commission. Ever.</p>
             <a href="purchase.html" class="btn-primary">Get Your Roadie</a>
 
-            <!-- VOICE AGENT -->
-            <div style="margin-top: 32px; padding: 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(255,255,255,0.03); max-width: 400px; margin-left: auto; margin-right: auto;">
-                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; text-align: center;">🎙️ Talk to Roadie right now</p>
-                <elevenlabs-convai agent-id="agent_2601kmsn9g4zep9t73h1qe7ycgj3"></elevenlabs-convai>
-                <p style="font-size: 0.65rem; color: rgba(255,255,255,0.25); margin-top: 8px; text-align: center;">Click the mic and have a conversation with your future AI manager</p>
+            <!-- 3D ROADIE + VOICE AGENT -->
+            <div id="roadie-3d-agent" style="margin-top: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                <div style="position: relative; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; background: radial-gradient(ellipse at center, rgba(180,0,0,0.08) 0%, rgba(10,10,10,0.95) 70%); overflow: hidden; padding: 20px;">
+                    <!-- 3D Model Viewer -->
+                    <model-viewer
+                        id="roadie-model"
+                        src="roadie-3d-compressed.glb"
+                        alt="Roadie AI 3D Model"
+                        auto-rotate
+                        auto-rotate-delay="0"
+                        rotation-per-second="15deg"
+                        camera-controls
+                        interaction-prompt="none"
+                        shadow-intensity="0.5"
+                        exposure="1.2"
+                        style="width: 100%; height: 300px; --poster-color: transparent; background: transparent;"
+                        camera-orbit="0deg 80deg 2m"
+                        min-camera-orbit="auto auto auto"
+                        max-camera-orbit="auto auto auto"
+                        field-of-view="30deg"
+                    ></model-viewer>
+                    
+                    <!-- Glow effect behind model -->
+                    <div id="voice-glow" style="position: absolute; top: 50%; left: 50%; width: 200px; height: 200px; transform: translate(-50%, -60%); border-radius: 50%; background: radial-gradient(circle, rgba(180,0,0,0.3) 0%, transparent 70%); pointer-events: none; transition: opacity 0.3s; opacity: 0.3;"></div>
+                    
+                    <!-- Voice Agent Widget -->
+                    <div style="text-align: center; margin-top: 8px;">
+                        <p style="font-size: 0.7rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">🎙️ Talk to Roadie</p>
+                        <elevenlabs-convai agent-id="agent_2601kmsn9g4zep9t73h1qe7ycgj3"></elevenlabs-convai>
+                        <p style="font-size: 0.6rem; color: rgba(255,255,255,0.2); margin-top: 6px;">Click the mic • Have a real conversation • Get a personalized plan</p>
+                    </div>
+                </div>
             </div>
+
+            <script>
+            // Pulse the glow and speed up rotation when voice is active
+            (function() {
+                var glow = document.getElementById('voice-glow');
+                var model = document.getElementById('roadie-model');
+                var speaking = false;
+                
+                // Watch for ElevenLabs widget state changes
+                setInterval(function() {
+                    var widget = document.querySelector('elevenlabs-convai');
+                    if (widget && widget.shadowRoot) {
+                        var activeEl = widget.shadowRoot.querySelector('[class*="active"], [class*="speaking"], [class*="listening"]');
+                        if (activeEl) {
+                            if (!speaking) {
+                                speaking = true;
+                                glow.style.opacity = '0.8';
+                                glow.style.animation = 'voicePulse 1s ease-in-out infinite';
+                                model.setAttribute('rotation-per-second', '30deg');
+                            }
+                        } else {
+                            if (speaking) {
+                                speaking = false;
+                                glow.style.opacity = '0.3';
+                                glow.style.animation = 'none';
+                                model.setAttribute('rotation-per-second', '15deg');
+                            }
+                        }
+                    }
+                }, 500);
+            })();
+            </script>
+            <style>
+                @keyframes voicePulse {
+                    0%, 100% { opacity: 0.4; transform: translate(-50%, -60%) scale(1); }
+                    50% { opacity: 0.9; transform: translate(-50%, -60%) scale(1.15); }
+                }
+            </style>
         </div>
     </section>
 
