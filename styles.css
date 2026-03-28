@@ -27,7 +27,7 @@ body {
 /* ---- NAVIGATION ---- */
 nav {
     position: fixed; top: 0; width: 100%;
-    padding: 14px 40px;
+    padding: 10px 40px;
     display: flex; justify-content: space-between; align-items: center;
     z-index: 100;
     background: rgba(10,10,10,0.92);
