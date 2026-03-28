@@ -162,6 +162,22 @@
 
                 </div>
 
+                <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; color: var(--red);">Step 3 — Add-Ons (Optional)</h3>
+
+                <!-- ROADIE VOICE ADD-ON -->
+                <div style="margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 20px 24px; background: rgba(255,255,255,0.02);">
+                    <label style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <input type="checkbox" id="roadie-voice" name="roadie_voice" style="width: 18px; height: 18px; accent-color: var(--red);">
+                            <div>
+                                <span style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">🎙️ Roadie Voice</span>
+                                <p style="font-size: 0.8rem; color: var(--gray); margin-top: 4px;">Your Roadie talks back. Send and receive voice messages on Telegram with a custom branded AI voice.</p>
+                            </div>
+                        </div>
+                        <span style="font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: #fff; white-space: nowrap; margin-left: 16px;">+ $20/mo</span>
+                    </label>
+                </div>
+
                 <!-- LOCAL INSTALL ADD-ON -->
                 <div style="margin-bottom: 32px; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 20px 24px; background: rgba(255,255,255,0.02);">
                     <label style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
@@ -220,16 +236,22 @@
             var plan = selected.value;
             var price = planPrices[plan];
             var localInstall = document.getElementById('local-install').checked;
+            var roadieVoice = document.getElementById('roadie-voice').checked;
             var note = document.getElementById('local-install-note');
             var summary = document.getElementById('summary-text');
 
             var setupTotal = price.setup + (localInstall ? 350 : 0);
+            var monthlyTotal = price.monthly + (roadieVoice ? 20 : 0);
 
             if (localInstall) {
-                summary.textContent = '$' + setupTotal.toLocaleString() + ' one-time (no monthly fee)';
+                if (roadieVoice) {
+                    summary.textContent = '$' + setupTotal.toLocaleString() + ' one-time + $20/mo voice';
+                } else {
+                    summary.textContent = '$' + setupTotal.toLocaleString() + ' one-time (no monthly fee)';
+                }
                 note.style.display = 'block';
             } else {
-                summary.textContent = '$' + setupTotal.toLocaleString() + ' setup + $' + price.monthly + '/mo';
+                summary.textContent = '$' + setupTotal.toLocaleString() + ' setup + $' + monthlyTotal + '/mo';
                 note.style.display = 'none';
             }
         }
@@ -251,6 +273,7 @@
         });
 
         document.getElementById('local-install').addEventListener('change', updateSummary);
+        document.getElementById('roadie-voice').addEventListener('change', updateSummary);
 
         document.getElementById('onboarding-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -280,6 +303,7 @@
             var planValue = selectedPlan.value;
 
             var localInstall = document.getElementById('local-install').checked;
+            var roadieVoice = document.getElementById('roadie-voice').checked;
 
             var formData = {
                 artist_name: artistName,
@@ -294,6 +318,7 @@
                 notes: notes,
                 plan: planValue,
                 local_install: localInstall,
+                roadie_voice: roadieVoice,
                 submitted_at: new Date().toISOString()
             };
 
@@ -310,7 +335,7 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({
-                    _subject: '🎸 New Roadie AI Signup — ' + artistName + ' (' + planValue.toUpperCase() + (localInstall ? ' + Local Install' : '') + ')',
+                    _subject: '🎸 New Roadie AI Signup — ' + artistName + ' (' + planValue.toUpperCase() + (localInstall ? ' + Local Install' : '') + (roadieVoice ? ' + Voice' : '') + ')',
                     'Artist Name': artistName,
                     'Genre': genre,
                     'Biggest Need': biggestNeed,
@@ -322,6 +347,7 @@
                     'Socials': socials || 'Not provided',
                     'Notes': notes || 'None',
                     'Plan': planValue.toUpperCase(),
+                    'Roadie Voice': roadieVoice ? 'YES (+$20/mo)' : 'No',
                     'Local Install': localInstall ? 'YES (+$350)' : 'No',
                     _template: 'table'
                 })
