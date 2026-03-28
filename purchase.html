@@ -218,10 +218,21 @@
 
     <script>
     (function() {
+        // All 12 Stripe Payment Links (plan + add-on combos)
         var stripeLinks = {
-            starter: 'https://buy.stripe.com/4gM9ATeNF6X7gNi4u98bS01',
-            pro: 'https://buy.stripe.com/eVqbJ1axpbdn9kQ8Kp8bS02',
-            label: 'https://buy.stripe.com/6oU6oH5d595fgNigcR8bS03'
+            // Base plans (setup + monthly hosting)
+            'starter':                  'https://buy.stripe.com/9B628rgVN95fcx28Kp8bS0b',
+            'starter_voice':            'https://buy.stripe.com/6oU4gz9tl2GR9kQ2m18bS0c',
+            'starter_local':            'https://buy.stripe.com/5kQ5kD34X6X71So6Ch8bS0d',
+            'starter_local_voice':      'https://buy.stripe.com/dRmbJ14916X70OkgcR8bS0e',
+            'pro':                      'https://buy.stripe.com/9B6aEXeNFgxH0Ok8Kp8bS0f',
+            'pro_voice':                'https://buy.stripe.com/dRm6oH8ph5T340waSx8bS0g',
+            'pro_local':                'https://buy.stripe.com/4gMeVd7ld5T3dB6aSx8bS0h',
+            'pro_local_voice':          'https://buy.stripe.com/7sYfZh9tlftD8gMgcR8bS0i',
+            'label':                    'https://buy.stripe.com/7sY6oHbBt0yJgNi7Gl8bS0j',
+            'label_voice':              'https://buy.stripe.com/28E28reNFftDaoU3q58bS0k',
+            'label_local':              'https://buy.stripe.com/9B6eVd5d54OZeFa0dT8bS0l',
+            'label_local_voice':        'https://buy.stripe.com/28EaEXgVN95f8gM2m18bS0m'
         };
 
         var planPrices = {
@@ -326,6 +337,13 @@
                 localStorage.setItem('roadie_onboarding', JSON.stringify(formData));
             } catch(err) {}
 
+            // Build the Stripe link key based on selections
+            var linkKey = planValue;
+            if (localInstall) linkKey += '_local';
+            if (roadieVoice) linkKey += '_voice';
+
+            var stripeUrl = stripeLinks[linkKey];
+
             // Send form data to Jeremy's email via FormSubmit
             var submitBtn = document.querySelector('button[type="submit"]');
             submitBtn.textContent = 'Processing...';
@@ -352,12 +370,8 @@
                     _template: 'table'
                 })
             }).then(function() {
-                // Redirect to Stripe after email sent
-                var stripeUrl = stripeLinks[planValue];
                 if (stripeUrl) { window.location.href = stripeUrl; }
             }).catch(function() {
-                // Still redirect even if email fails
-                var stripeUrl = stripeLinks[planValue];
                 if (stripeUrl) { window.location.href = stripeUrl; }
             });
         });
