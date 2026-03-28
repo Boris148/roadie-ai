@@ -299,14 +299,41 @@
 
             try {
                 localStorage.setItem('roadie_onboarding', JSON.stringify(formData));
-            } catch(err) {
-                // localStorage not available, proceed anyway
-            }
+            } catch(err) {}
 
-            var stripeUrl = stripeLinks[planValue];
-            if (stripeUrl) {
-                window.location.href = stripeUrl;
-            }
+            // Send form data to Jeremy's email via FormSubmit
+            var submitBtn = document.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+
+            fetch('https://formsubmit.co/ajax/jeremy@semgllc.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: '🎸 New Roadie AI Signup — ' + artistName + ' (' + planValue.toUpperCase() + (localInstall ? ' + Local Install' : '') + ')',
+                    'Artist Name': artistName,
+                    'Genre': genre,
+                    'Biggest Need': biggestNeed,
+                    'Telegram': telegram,
+                    'Email': email,
+                    'Artist Identity': artistIdentity,
+                    'Goals': goals,
+                    'Music Links': musicLinks || 'Not provided',
+                    'Socials': socials || 'Not provided',
+                    'Notes': notes || 'None',
+                    'Plan': planValue.toUpperCase(),
+                    'Local Install': localInstall ? 'YES (+$350)' : 'No',
+                    _template: 'table'
+                })
+            }).then(function() {
+                // Redirect to Stripe after email sent
+                var stripeUrl = stripeLinks[planValue];
+                if (stripeUrl) { window.location.href = stripeUrl; }
+            }).catch(function() {
+                // Still redirect even if email fails
+                var stripeUrl = stripeLinks[planValue];
+                if (stripeUrl) { window.location.href = stripeUrl; }
+            });
         });
     })();
     </script>
