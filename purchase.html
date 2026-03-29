@@ -43,8 +43,8 @@
             </div>
             <div class="flow-step">
                 <div class="flow-step-num">2</div>
-                <h4>Subscribe — $99/mo</h4>
-                <p>No setup fee, cancel anytime</p>
+                <h4>Choose Your Plan</h4>
+                <p>$99/mo or Local $997</p>
             </div>
             <div class="flow-step">
                 <div class="flow-step-num">3</div>
@@ -88,33 +88,38 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Describe yourself as an artist *</label>
+                    <label>Describe yourself as an artist (1-2 sentences) *</label>
                     <textarea id="artist-identity" name="artist_identity" required placeholder="e.g. I'm a bilingual hip-hop artist from Houston blending Latin beats with Southern rap. I write about family, hustle, and growth." rows="3"></textarea>
                     <p style="font-size: 0.75rem; color: #555; margin-top: 6px;">This becomes your Roadie's soul — it shapes how it represents you.</p>
                 </div>
 
                 <div class="form-group">
-                    <label>Top 3 Goals *</label>
+                    <label>Top 3 Goals for the Next 6 Months *</label>
                     <textarea id="goals" name="goals" required placeholder="e.g. 1) Book 5 shows in Texas  2) Hit 10K monthly Spotify listeners  3) Release my EP in June" rows="3"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>Links to your music (Spotify, Apple Music, SoundCloud, YouTube)</label>
+                    <label>Music Links (Spotify, Apple Music, SoundCloud, YouTube)</label>
                     <input type="text" id="music-links" name="music_links" placeholder="e.g. open.spotify.com/artist/...">
                 </div>
 
                 <div class="form-group">
-                    <label>Social media handles</label>
+                    <label>Social Media Handles</label>
                     <input type="text" id="socials" name="socials" placeholder="e.g. @yourname on IG, TikTok, Twitter">
+                </div>
+
+                <div class="form-group">
+                    <label>Anything Else We Should Know?</label>
+                    <textarea id="anything-else" name="anything_else" placeholder="e.g. I have a new album dropping in May, I'm looking for sync licensing, I need help with merch..." rows="3"></textarea>
                 </div>
 
                 <h3 style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; margin: 40px 0 24px; color: var(--red);">Your Plan</h3>
 
-                <div style="display: grid; gap: 12px; margin-bottom: 32px;">
-                    <label class="plan-option" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(180,0,0,0.06); border: 2px solid var(--red); border-radius: 6px; cursor: pointer; transition: 0.3s;">
+                <div style="display: grid; gap: 12px; margin-bottom: 24px;">
+                    <label class="plan-option" id="plan-monthly-label" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(180,0,0,0.06); border: 2px solid var(--red); border-radius: 6px; cursor: pointer; transition: 0.3s;">
                         <input type="radio" name="plan" value="monthly" checked style="display: none;">
                         <div>
-                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Roadie AI</span>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Roadie AI — Monthly</span>
                             <p style="font-size: 0.8rem; color: var(--gray); margin-top: 4px;">Full autonomous AI artist manager — everything included</p>
                         </div>
                         <div style="text-align: right;">
@@ -122,19 +127,42 @@
                             <p style="font-size: 0.75rem; color: var(--gray);">Cancel anytime</p>
                         </div>
                     </label>
+                    <label class="plan-option" id="plan-local-label" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; cursor: pointer; transition: 0.3s;">
+                        <input type="radio" name="plan" value="local" style="display: none;">
+                        <div>
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Local Install</span>
+                            <p style="font-size: 0.8rem; color: var(--gray); margin-top: 4px;">Same everything, runs on your machine. One-time payment.</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: #fff;">$997</span>
+                            <p style="font-size: 0.75rem; color: var(--gray);">One-time</p>
+                        </div>
+                    </label>
                 </div>
 
-                <!-- LOCAL INSTALL OPTION -->
-                <div style="margin-bottom: 32px; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 20px 24px; background: rgba(255,255,255,0.02);">
-                    <label style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                <!-- ADD-ONS -->
+                <h3 style="font-family: 'Oswald', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin: 32px 0 16px; color: var(--gray);">Optional Add-Ons</h3>
+
+                <div style="display: grid; gap: 12px; margin-bottom: 32px;">
+                    <label style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; cursor: pointer; transition: 0.3s;">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <input type="checkbox" id="local-install" name="local_install" style="width: 18px; height: 18px; accent-color: var(--red);">
+                            <input type="checkbox" id="addon-voice" name="addon_voice" style="width: 18px; height: 18px; accent-color: var(--red);">
                             <div>
-                                <span style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Local Install Instead</span>
-                                <p style="font-size: 0.8rem; color: var(--gray); margin-top: 4px;">Same everything, runs on your machine. One-time payment, no monthly fees.</p>
+                                <span style="font-family: 'Oswald', sans-serif; font-size: 0.95rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Roadie Voice</span>
+                                <p style="font-size: 0.75rem; color: var(--gray); margin-top: 2px;">Send/receive voice messages on Telegram with a branded AI voice</p>
                             </div>
                         </div>
-                        <span style="font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: #fff; white-space: nowrap; margin-left: 16px;">$997</span>
+                        <span style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: var(--red); white-space: nowrap; margin-left: 16px;">+$20/mo</span>
+                    </label>
+                    <label style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; cursor: pointer; transition: 0.3s;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <input type="checkbox" id="addon-codex" name="addon_codex" style="width: 18px; height: 18px; accent-color: var(--red);">
+                            <div>
+                                <span style="font-family: 'Oswald', sans-serif; font-size: 0.95rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Codex Brain</span>
+                                <p style="font-size: 0.75rem; color: var(--gray); margin-top: 2px;">Roadie can write code, build websites, landing pages, EPKs, automate workflows</p>
+                            </div>
+                        </div>
+                        <span style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: var(--red); white-space: nowrap; margin-left: 16px;">+$30/mo</span>
                     </label>
                 </div>
 
@@ -158,26 +186,60 @@
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="faq.html">FAQ</a>
+            <a href="purchase.html">Get Started</a>
         </div>
         <p>&copy; 2026 Roadie AI &middot; A <a href="https://socialelitemarketinggroup.com">Social Elite</a> Product &middot; Built for the independent music grind</p>
     </footer>
 
     <script>
     (function() {
-        var stripeMonthly = 'https://buy.stripe.com/PLACEHOLDER_99_MONTHLY';
-        var stripeLocal = 'https://buy.stripe.com/PLACEHOLDER_997_LOCAL';
+        var stripeMonthly = 'https://buy.stripe.com/28E14ngVN5T3eFa2m18bS0z';
+        var stripeLocal = 'https://buy.stripe.com/3cI5kD5d5epz0OkgcR8bS0A';
 
         function updateSummary() {
-            var localInstall = document.getElementById('local-install').checked;
+            var planRadios = document.querySelectorAll('input[name="plan"]');
+            var isLocal = false;
+            for (var i = 0; i < planRadios.length; i++) {
+                if (planRadios[i].value === 'local' && planRadios[i].checked) isLocal = true;
+            }
+            var voice = document.getElementById('addon-voice').checked;
+            var codex = document.getElementById('addon-codex').checked;
             var summary = document.getElementById('summary-text');
-            if (localInstall) {
-                summary.textContent = '$997 one-time — No monthly fees';
+
+            // Update plan label styles
+            var monthlyLabel = document.getElementById('plan-monthly-label');
+            var localLabel = document.getElementById('plan-local-label');
+            if (isLocal) {
+                monthlyLabel.style.background = 'rgba(255,255,255,0.02)';
+                monthlyLabel.style.border = '1px solid rgba(255,255,255,0.06)';
+                localLabel.style.background = 'rgba(180,0,0,0.06)';
+                localLabel.style.border = '2px solid var(--red)';
             } else {
-                summary.textContent = '$99/mo — Cancel anytime';
+                monthlyLabel.style.background = 'rgba(180,0,0,0.06)';
+                monthlyLabel.style.border = '2px solid var(--red)';
+                localLabel.style.background = 'rgba(255,255,255,0.02)';
+                localLabel.style.border = '1px solid rgba(255,255,255,0.06)';
+            }
+
+            if (isLocal) {
+                var addons = [];
+                if (voice) addons.push('+$20/mo Voice');
+                if (codex) addons.push('+$30/mo Codex');
+                summary.textContent = '$997 one-time' + (addons.length ? ' + ' + addons.join(' + ') : '') + ' — No monthly base fee';
+            } else {
+                var total = 99;
+                if (voice) total += 20;
+                if (codex) total += 30;
+                summary.textContent = '$' + total + '/mo — Cancel anytime';
             }
         }
 
-        document.getElementById('local-install').addEventListener('change', updateSummary);
+        var planRadios = document.querySelectorAll('input[name="plan"]');
+        for (var i = 0; i < planRadios.length; i++) {
+            planRadios[i].addEventListener('change', updateSummary);
+        }
+        document.getElementById('addon-voice').addEventListener('change', updateSummary);
+        document.getElementById('addon-codex').addEventListener('change', updateSummary);
 
         document.getElementById('onboarding-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -191,14 +253,25 @@
             var goals = document.getElementById('goals').value.trim();
             var musicLinks = document.getElementById('music-links').value.trim();
             var socials = document.getElementById('socials').value.trim();
+            var anythingElse = document.getElementById('anything-else').value.trim();
 
             if (!artistName || !genre || !location || !telegram || !email || !artistIdentity || !goals) {
                 alert('Please fill in all required fields.');
                 return;
             }
 
-            var localInstall = document.getElementById('local-install').checked;
-            var planType = localInstall ? 'LOCAL_INSTALL' : 'MONTHLY';
+            var planRadios = document.querySelectorAll('input[name="plan"]');
+            var isLocal = false;
+            for (var i = 0; i < planRadios.length; i++) {
+                if (planRadios[i].value === 'local' && planRadios[i].checked) isLocal = true;
+            }
+            var voice = document.getElementById('addon-voice').checked;
+            var codex = document.getElementById('addon-codex').checked;
+
+            var planType = isLocal ? 'LOCAL_INSTALL' : 'MONTHLY';
+            var addons = [];
+            if (voice) addons.push('Roadie Voice (+$20/mo)');
+            if (codex) addons.push('Codex Brain (+$30/mo)');
 
             var formData = {
                 artist_name: artistName,
@@ -210,7 +283,9 @@
                 goals: goals,
                 music_links: musicLinks,
                 socials: socials,
+                anything_else: anythingElse,
                 plan: planType,
+                addons: addons.join(', ') || 'None',
                 submitted_at: new Date().toISOString()
             };
 
@@ -218,7 +293,8 @@
                 localStorage.setItem('roadie_onboarding', JSON.stringify(formData));
             } catch(err) {}
 
-            var stripeUrl = localInstall ? stripeLocal : stripeMonthly;
+            // All selections redirect to $99/mo link for now
+            var stripeUrl = stripeMonthly;
 
             var submitBtn = document.querySelector('button[type="submit"]');
             submitBtn.textContent = 'Processing...';
@@ -228,7 +304,7 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({
-                    _subject: 'New Roadie AI Signup — ' + artistName + ' (' + planType + ')',
+                    _subject: '\uD83C\uDFA4 New Roadie AI Signup \u2014 ' + artistName + ' (' + planType + ')',
                     'Artist Name': artistName,
                     'Genre': genre,
                     'Location': location,
@@ -238,7 +314,9 @@
                     'Goals': goals,
                     'Music Links': musicLinks || 'Not provided',
                     'Socials': socials || 'Not provided',
+                    'Anything Else': anythingElse || 'Not provided',
                     'Plan': planType,
+                    'Add-Ons': addons.join(', ') || 'None',
                     _template: 'table'
                 })
             }).then(function() {
