@@ -182,8 +182,6 @@
             for (var i = 0; i < planRadios.length; i++) {
                 if (planRadios[i].value === 'local' && planRadios[i].checked) isLocal = true;
             }
-            var voice = document.getElementById('addon-voice').checked;
-            var codex = document.getElementById('addon-codex').checked;
             var summary = document.getElementById('summary-text');
 
             // Update plan label styles
@@ -202,15 +200,9 @@
             }
 
             if (isLocal) {
-                var addons = [];
-                if (voice) addons.push('+$20/mo Voice');
-                if (codex) addons.push('+$30/mo Codex');
-                summary.textContent = '$997 one-time' + (addons.length ? ' + ' + addons.join(' + ') : '') + ' — No monthly base fee';
+                summary.textContent = '$997 one-time — Everything included. No monthly fee.';
             } else {
-                var total = 99;
-                if (voice) total += 20;
-                if (codex) total += 30;
-                summary.textContent = '$' + total + '/mo — Cancel anytime';
+                summary.textContent = '$99/mo — Everything included. Cancel anytime.';
             }
         }
 
@@ -218,8 +210,6 @@
         for (var i = 0; i < planRadios.length; i++) {
             planRadios[i].addEventListener('change', updateSummary);
         }
-        document.getElementById('addon-voice').addEventListener('change', updateSummary);
-        document.getElementById('addon-codex').addEventListener('change', updateSummary);
 
         document.getElementById('onboarding-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -245,13 +235,7 @@
             for (var i = 0; i < planRadios.length; i++) {
                 if (planRadios[i].value === 'local' && planRadios[i].checked) isLocal = true;
             }
-            var voice = document.getElementById('addon-voice').checked;
-            var codex = document.getElementById('addon-codex').checked;
-
             var planType = isLocal ? 'LOCAL_INSTALL' : 'MONTHLY';
-            var addons = [];
-            if (voice) addons.push('Roadie Voice (+$20/mo)');
-            if (codex) addons.push('Codex Brain (+$30/mo)');
 
             var formData = {
                 artist_name: artistName,
@@ -265,7 +249,7 @@
                 socials: socials,
                 anything_else: anythingElse,
                 plan: planType,
-                addons: addons.join(', ') || 'None',
+                addons: 'All included',
                 submitted_at: new Date().toISOString()
             };
 
@@ -296,7 +280,7 @@
                     'Socials': socials || 'Not provided',
                     'Anything Else': anythingElse || 'Not provided',
                     'Plan': planType,
-                    'Add-Ons': addons.join(', ') || 'None',
+                    'Add-Ons': 'All included (no add-ons)',
                     _template: 'table'
                 })
             }).then(function() {
