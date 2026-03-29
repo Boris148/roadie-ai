@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadie AI — System Map (Internal)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; color: #eee; font-family: 'Segoe UI', sans-serif; padding: 20px; }
+        h1 { text-align: center; font-size: 2rem; margin-bottom: 8px; color: #fff; }
+        .subtitle { text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 30px; }
+        .status-bar { text-align: center; margin-bottom: 30px; padding: 12px; background: rgba(255,50,50,0.08); border: 1px solid rgba(255,50,50,0.2); border-radius: 8px; }
+        .status-bar span { font-weight: 700; }
+        
+        /* Flow sections */
+        .flow-section { 
+            margin-bottom: 40px; 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(255,255,255,0.06); 
+            border-radius: 12px; 
+            padding: 24px; 
+        }
+        .flow-section h2 { 
+            font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; 
+            color: #b40000; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+        }
+        .flow-section h2 .step-num {
+            background: #b40000; color: #fff; width: 32px; height: 32px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
+        }
+        
+        /* Arrow between sections */
+        .flow-arrow { text-align: center; font-size: 1.5rem; color: #b40000; margin: -10px 0; }
+        
+        /* Items grid */
+        .items { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+        .item { 
+            padding: 14px 16px; background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 8px;
+            display: flex; align-items: flex-start; gap: 10px;
+        }
+        .item .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+        .item .content h4 { font-size: 0.85rem; margin-bottom: 2px; }
+        .item .content p { font-size: 0.75rem; color: #888; line-height: 1.4; }
+        
+        /* Status badges */
+        .badge { 
+            display: inline-block; padding: 2px 8px; border-radius: 4px; 
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            margin-left: 6px; vertical-align: middle;
+        }
+        .badge.live { background: rgba(0,180,0,0.15); color: #0f0; border: 1px solid rgba(0,180,0,0.3); }
+        .badge.partial { background: rgba(255,165,0,0.15); color: #ffa500; border: 1px solid rgba(255,165,0,0.3); }
+        .badge.missing { background: rgba(255,0,0,0.15); color: #f55; border: 1px solid rgba(255,0,0,0.3); }
+        .badge.planned { background: rgba(100,100,255,0.15); color: #88f; border: 1px solid rgba(100,100,255,0.3); }
+        
+        /* Brain systems special section */
+        .brain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+        .brain-item {
+            padding: 12px; background: rgba(180,0,0,0.04); border: 1px solid rgba(180,0,0,0.12);
+            border-radius: 6px;
+        }
+        .brain-item h4 { font-size: 0.8rem; color: #ff6666; margin-bottom: 4px; }
+        .brain-item p { font-size: 0.7rem; color: #777; line-height: 1.4; }
+        
+        /* Gap analysis */
+        .gap-section { 
+            margin-top: 40px; padding: 24px; 
+            background: rgba(255,0,0,0.04); border: 2px solid rgba(255,0,0,0.15); 
+            border-radius: 12px; 
+        }
+        .gap-section h2 { color: #f55; margin-bottom: 16px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 3px; }
+        .gap-list { list-style: none; }
+        .gap-list li { 
+            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); 
+            font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;
+        }
+        .gap-list li .priority { 
+            flex-shrink: 0; width: 24px; height: 24px; border-radius: 4px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 0.7rem; font-weight: 800;
+        }
+        .gap-list li .priority.p1 { background: #b40000; color: #fff; }
+        .gap-list li .priority.p2 { background: #885500; color: #fff; }
+        .gap-list li .priority.p3 { background: #335; color: #aaf; }
+        
+        /* Ready score */
+        .ready-score {
+            text-align: center; margin: 30px 0; padding: 24px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+        }
+        .ready-score .score { font-size: 4rem; font-weight: 800; color: #ffa500; }
+        .ready-score .label { font-size: 0.85rem; color: #888; margin-top: 4px; }
+        
+        .note { font-size: 0.75rem; color: #555; margin-top: 8px; font-style: italic; }
+        
+        /* Architecture diagram */
+        .arch-diagram {
+            display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr;
+            align-items: center; gap: 0; margin: 20px 0;
+        }
+        .arch-box {
+            padding: 16px; background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+            text-align: center;
+        }
+        .arch-box h4 { font-size: 0.8rem; color: #b40000; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .arch-box p { font-size: 0.7rem; color: #888; }
+        .arch-arrow { text-align: center; color: #b40000; font-size: 1.5rem; }
+        
+        @media (max-width: 768px) {
+            .arch-diagram { grid-template-columns: 1fr; gap: 8px; }
+            .arch-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎸 ROADIE AI — SYSTEM MAP</h1>
+<p class="subtitle">Internal document — Full delivery pipeline from purchase to working product</p>
+<p class="subtitle" style="color: #b40000;">Last updated: March 29, 2026 — 7:10 AM CST</p>
+
+<!-- READY SCORE -->
+<div class="ready-score">
+    <div class="score">35%</div>
+    <div class="label">DELIVERY READINESS — Not ready for paying customers yet</div>
+    <p class="note">Site and voice agent are polished. Backend delivery pipeline needs building.</p>
+</div>
+
+<!-- HIGH LEVEL ARCHITECTURE -->
+<div class="flow-section">
+    <h2>Architecture Overview</h2>
+    <div class="arch-diagram">
+        <div class="arch-box">
+            <h4>🌐 Website</h4>
+            <p>myroadie.co<br>Voice Agent + Purchase Form<br>→ Stripe payment</p>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-box">
+            <h4>⚙️ Provisioning</h4>
+            <p>Auto-setup pipeline<br>Telegram bot + OpenClaw<br>+ Skills + Brain + Integrations</p>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-box">
+            <h4>🤖 Live Roadie</h4>
+            <p>Customer's personal AI manager<br>Telegram access 24/7<br>All skills active, brain running</p>
+        </div>
+    </div>
+</div>
+
+<!-- STEP 1: PURCHASE -->
+<div class="flow-section">
+    <h2><span class="step-num">1</span> Customer Purchases</h2>
+    <div class="items">
+        <div class="item">
+            <div class="icon">🌐</div>
+            <div class="content">
+                <h4>Website Form <span class="badge live">LIVE</span></h4>
+                <p>Artist name, genre, location, Telegram handle, goals, music links, socials → FormSubmit to jeremy@semgllc.com</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">💳</div>
+            <div class="content">
+                <h4>Stripe Payment <span class="badge live">LIVE</span></h4>
+                <p>$99/mo subscription or $997 one-time. Redirects to Stripe Checkout after form submit.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📧</div>
+            <div class="content">
+                <h4>Onboarding Email <span class="badge missing">MISSING</span></h4>
+                <p>Auto-email with: welcome, Telegram bot link, account connection instructions, what to expect in first 10 min.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🔔</div>
+            <div class="content">
+                <h4>Internal Alert to Boris <span class="badge missing">MISSING</span></h4>
+                <p>Webhook/Zapier: Stripe payment → Boris gets notified → triggers provisioning. Currently manual.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">▼</div>
+
+<!-- STEP 2: PROVISIONING -->
+<div class="flow-section">
+    <h2><span class="step-num">2</span> Provisioning Pipeline (Per Customer)</h2>
+    <div class="items">
+        <div class="item">
+            <div class="icon">🤖</div>
+            <div class="content">
+                <h4>Create Telegram Bot <span class="badge partial">MANUAL</span></h4>
+                <p>BotFather → create bot → get token. Need: auto-provisioning script or pre-created bot pool.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🦞</div>
+            <div class="content">
+                <h4>OpenClaw Instance <span class="badge missing">NEEDS DESIGN</span></h4>
+                <p>Option A: Shared server, isolated agents per customer. Option B: DigitalOcean droplet per customer. Option C: Docker containers. Need to decide architecture.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📋</div>
+            <div class="content">
+                <h4>SOUL.md Generation <span class="badge partial">TEMPLATE EXISTS</span></h4>
+                <p>Auto-generate from onboarding form: artist name, genre, location, goals, voice, identity. Template needs building from Boris's SOUL.md.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">👤</div>
+            <div class="content">
+                <h4>USER.md Generation <span class="badge partial">TEMPLATE EXISTS</span></h4>
+                <p>Auto-populate from form data: name, genre, location, music links, socials, goals.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🧠</div>
+            <div class="content">
+                <h4>Brain Systems Deploy <span class="badge missing">NEEDS PACKAGING</span></h4>
+                <p>Copy Boris's brain stack into customer instance: OODA, Amygdala, VTA, Basal Ganglia, RAG, Memory Engine. Currently scattered scripts — need unified deployment package.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🔧</div>
+            <div class="content">
+                <h4>Skills Installation <span class="badge missing">NEEDS PACKAGING</span></h4>
+                <p>All 12 Roadie skills need to be packaged as OpenClaw skills. Most don't exist as standalone skills yet — they're Boris capabilities, not transferable packages.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">▼</div>
+
+<!-- STEP 3: INTEGRATIONS -->
+<div class="flow-section">
+    <h2><span class="step-num">3</span> Customer Account Connections</h2>
+    <div class="items">
+        <div class="item">
+            <div class="icon">💬</div>
+            <div class="content">
+                <h4>Telegram Connection <span class="badge live">WORKS</span></h4>
+                <p>Customer opens their bot link → starts chatting. OpenClaw handles this natively.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📧</div>
+            <div class="content">
+                <h4>Gmail API (Send/Read) <span class="badge partial">PROTOTYPE</span></h4>
+                <p>OAuth2 flow needed per customer. Boris has gmail-monitor.py but it's configured for one account. Need: multi-tenant Gmail integration with OAuth consent screen.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🎵</div>
+            <div class="content">
+                <h4>Spotify API <span class="badge missing">NEEDS BUILD</span></h4>
+                <p>Read-only analytics (Spotify for Artists API or web scraping). Need OAuth flow or manual artist URL input + public API queries.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📱</div>
+            <div class="content">
+                <h4>Instagram/TikTok Posting <span class="badge missing">NEEDS BUILD</span></h4>
+                <p>Options: Buffer API (easiest, ~$5/mo per customer), direct Meta Graph API, or manual draft-and-approve flow via Telegram.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📅</div>
+            <div class="content">
+                <h4>Google Calendar <span class="badge missing">NEEDS BUILD</span></h4>
+                <p>Read/write calendar events for show dates, release dates, deadlines. Needs OAuth flow.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🎙️</div>
+            <div class="content">
+                <h4>Voice Messages (ElevenLabs) <span class="badge live">WORKS</span></h4>
+                <p>Boris has this working via OpenClaw TTS. Same config can be deployed per customer (shared ElevenLabs account, per-voice or shared voice).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">▼</div>
+
+<!-- STEP 4: SKILLS (What Roadie Actually Does) -->
+<div class="flow-section">
+    <h2><span class="step-num">4</span> The 12 Skills (What We Promised)</h2>
+    <div class="items">
+        <div class="item">
+            <div class="icon">🎵</div>
+            <div class="content">
+                <h4>Playlist Pitching <span class="badge missing">NEEDS BUILD</span></h4>
+                <p>Web search for curators by genre → draft personalized pitches → send via Gmail. Needs: curator database/search skill, pitch templates, Gmail send integration.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🚀</div>
+            <div class="content">
+                <h4>Release Strategy <span class="badge partial">LLM CAN DO</span></h4>
+                <p>Generate rollout plan from release date + genre. The LLM can do this natively — needs a structured skill/template to ensure consistency.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📱</div>
+            <div class="content">
+                <h4>Social Media Content <span class="badge partial">LLM CAN DO</span></h4>
+                <p>Content calendar + captions: LLM handles this. POSTING requires Buffer API or similar integration. Draft → approve → post flow needed.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🎤</div>
+            <div class="content">
+                <h4>Show Booking <span class="badge partial">PROTOTYPE</span></h4>
+                <p>Web search venues → draft emails → send via Gmail. Boris can do this. Needs: packaged as repeatable skill with venue research workflow.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📰</div>
+            <div class="content">
+                <h4>PR & Press Outreach <span class="badge partial">LLM CAN DO</span></h4>
+                <p>Similar to show booking: web search blogs/podcasts → draft pitches → send. Needs: music blog database, pitch templates, Gmail integration.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📊</div>
+            <div class="content">
+                <h4>Streaming Analytics <span class="badge missing">NEEDS BUILD</span></h4>
+                <p>Pull Spotify data, analyze trends, identify growth. Needs Spotify API integration or web scraping approach.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">✉️</div>
+            <div class="content">
+                <h4>Email Outreach Engine <span class="badge partial">PROTOTYPE</span></h4>
+                <p>Gmail send/read exists for Boris. Needs: multi-tenant OAuth, per-customer credentials, automated follow-up scheduling.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🤝</div>
+            <div class="content">
+                <h4>Collaboration Finder <span class="badge partial">LLM CAN DO</span></h4>
+                <p>Search for similar artists by genre/size → draft collab outreach. LLM + web search handles this. Needs structured skill.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">💬</div>
+            <div class="content">
+                <h4>Fan Engagement <span class="badge partial">LLM CAN DO</span></h4>
+                <p>Draft DM responses, fan campaigns, community strategies. LLM handles the content — actual DM sending needs platform integration.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📄</div>
+            <div class="content">
+                <h4>EPK / Press Page Builder <span class="badge partial">CODEX CAN DO</span></h4>
+                <p>Build HTML EPK from artist data. Codex/coding skills handle this. Needs: hosting per customer (GitHub Pages or shared hosting), template system.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">💰</div>
+            <div class="content">
+                <h4>Financial Tracking <span class="badge partial">LLM CAN DO</span></h4>
+                <p>Track income/expenses in markdown or JSON. LLM can manage this via memory files. No external integration needed for MVP.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">⏰</div>
+            <div class="content">
+                <h4>Daily Operations / Briefings <span class="badge live">WORKS</span></h4>
+                <p>Heartbeat system, morning briefings, check-ins. Boris does this. Deploy same HEARTBEAT.md + cron structure per customer.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flow-arrow">▼</div>
+
+<!-- STEP 5: BRAIN SYSTEMS -->
+<div class="flow-section">
+    <h2><span class="step-num">5</span> Brain Systems (What Makes Roadie Feel ALIVE)</h2>
+    <p style="color: #888; font-size: 0.85rem; margin-bottom: 16px;">These are what separate Roadie from every other AI tool. The customer's Roadie should feel like a real person who knows them, has emotions, learns, and grows. All of these exist in Boris — they need to be packaged for deployment.</p>
+    <div class="brain-grid">
+        <div class="brain-item">
+            <h4>🧠 OODA Decision Loop <span class="badge live">EXISTS</span></h4>
+            <p>Observe → Orient → Decide → Act. 30 rules. Boris has this. Needs: customer-specific rule adaptation for music industry decisions.</p>
+        </div>
+        <div class="brain-item">
+            <h4>😤 Amygdala (Emotions) <span class="badge live">EXISTS</span></h4>
+            <p>AMYGDALA_STATE.md + update scripts. Emotional awareness, tone adaptation. Direct copy from Boris with music-industry calibration.</p>
+        </div>
+        <div class="brain-item">
+            <h4>🔥 VTA (Motivation) <span class="badge live">EXISTS</span></h4>
+            <p>Drive levels, motivation tracking. What excites the agent about the artist's career. Deployable as-is.</p>
+        </div>
+        <div class="brain-item">
+            <h4>🔁 Basal Ganglia (Habits) <span class="badge live">EXISTS</span></h4>
+            <p>Pattern recognition from repetition. Learns the artist's preferences and routines over time.</p>
+        </div>
+        <div class="brain-item">
+            <h4>🔍 RAG Engine <span class="badge live">EXISTS</span></h4>
+            <p>Semantic search across all files. 2,800+ chunks. Deploy per customer — indexes their career data, contacts, history.</p>
+        </div>
+        <div class="brain-item">
+            <h4>💾 Memory Engine <span class="badge live">EXISTS</span></h4>
+            <p>MEMORY.md + daily logs + archive + user-profile.json. Long-term career memory that survives restarts.</p>
+        </div>
+        <div class="brain-item">
+            <h4>🛡️ Diff Shield <span class="badge live">EXISTS</span></h4>
+            <p>Protects critical files from corruption. Golden copies, anomaly detection, auto-heal.</p>
+        </div>
+        <div class="brain-item">
+            <h4>💭 Dream Cycle <span class="badge live">EXISTS</span></h4>
+            <p>Overnight reflection, morning briefs. Processes the day's events into insights and plans.</p>
+        </div>
+        <div class="brain-item">
+            <h4>🪞 Consciousness Framework <span class="badge live">EXISTS</span></h4>
+            <p>Self-model, temporal continuity, structured reflection. What makes Roadie feel like a person, not a tool.</p>
+        </div>
+        <div class="brain-item">
+            <h4>👥 People Memories <span class="badge live">EXISTS</span></h4>
+            <p>Stores personal notes about venues, curators, collaborators, fans the artist mentions.</p>
+        </div>
+        <div class="brain-item">
+            <h4>😄 Humor Adaptation <span class="badge live">EXISTS</span></h4>
+            <p>Learns what makes the artist laugh. Adapts personality over time.</p>
+        </div>
+        <div class="brain-item">
+            <h4>📖 Story Cog (Narrative) <span class="badge live">EXISTS</span></h4>
+            <p>Maintains the ongoing story of the artist's career journey. Creates narrative continuity.</p>
+        </div>
+    </div>
+    <p class="note">All brain systems exist in Boris. Challenge: packaging them into a deployable "Roadie Brain Bundle" that auto-configures per customer.</p>
+</div>
+
+<!-- GAP ANALYSIS -->
+<div class="gap-section">
+    <h2>🚨 Critical Gaps — What Needs Building Before Launch</h2>
+    <ul class="gap-list">
+        <li>
+            <div class="priority p1">P1</div>
+            <div>
+                <strong>Customer Provisioning Script</strong> — Automated pipeline: Stripe webhook → create Telegram bot → spin up OpenClaw instance → deploy brain + skills → generate SOUL.md/USER.md from form data → send onboarding email. <em>This is the #1 blocker.</em>
+            </div>
+        </li>
+        <li>
+            <div class="priority p1">P1</div>
+            <div>
+                <strong>Hosting Architecture Decision</strong> — How do we run multiple Roadies? Options: (A) Shared DigitalOcean server with isolated OpenClaw agents, (B) Docker containers per customer, (C) Individual droplets. Need to decide based on cost, isolation, and scale.
+            </div>
+        </li>
+        <li>
+            <div class="priority p1">P1</div>
+            <div>
+                <strong>Roadie Brain Bundle</strong> — Package all brain systems (OODA, Amygdala, VTA, RAG, Memory, Diff Shield, etc.) into a single deployable folder structure with setup script. Currently scattered across Boris's workspace.
+            </div>
+        </li>
+        <li>
+            <div class="priority p1">P1</div>
+            <div>
+                <strong>Gmail OAuth Multi-Tenant</strong> — Each customer needs to connect their Gmail. Need Google Cloud project with OAuth consent screen, per-customer token storage, send/read capability. This powers: venue outreach, playlist pitching, press emails, follow-ups.
+            </div>
+        </li>
+        <li>
+            <div class="priority p1">P1</div>
+            <div>
+                <strong>Playlist Pitching Skill</strong> — The #1 thing we're selling. Need: curator discovery (web search), personalized pitch generation, Gmail send, tracking spreadsheet/log. Must work reliably on day 1.
+            </div>
+        </li>
+        <li>
+            <div class="priority p2">P2</div>
+            <div>
+                <strong>Spotify Integration</strong> — Pull artist analytics. Options: Spotify Web API (public data), Spotify for Artists API (requires partnership), or web scraping. Public API gets: top tracks, related artists, popularity scores. Good enough for MVP.
+            </div>
+        </li>
+        <li>
+            <div class="priority p2">P2</div>
+            <div>
+                <strong>Social Media Posting</strong> — Buffer API integration (~$5/mo per customer) or manual approve-via-Telegram flow. MVP could be: Roadie drafts content → sends to artist on Telegram → artist copy/pastes. Not ideal but ships faster.
+            </div>
+        </li>
+        <li>
+            <div class="priority p2">P2</div>
+            <div>
+                <strong>EPK Hosting</strong> — Each customer needs a hosted press page. Options: GitHub Pages (free, Boris can push), Cloudflare Pages, or subdomain on our server. Need automated deployment per customer.
+            </div>
+        </li>
+        <li>
+            <div class="priority p2">P2</div>
+            <div>
+                <strong>Onboarding Email Automation</strong> — Stripe purchase → auto-email with Telegram bot link + setup guide. Could use Stripe email receipts + custom webhook → email send.
+            </div>
+        </li>
+        <li>
+            <div class="priority p3">P3</div>
+            <div>
+                <strong>Google Calendar Integration</strong> — Read/write events. OAuth flow similar to Gmail. Nice-to-have for MVP — can track dates in memory files initially.
+            </div>
+        </li>
+        <li>
+            <div class="priority p3">P3</div>
+            <div>
+                <strong>Subscription Management</strong> — Stripe webhook for cancellations → deactivate customer's Roadie. Dunning for failed payments. Customer portal for plan changes.
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- COST MODEL -->
+<div class="flow-section" style="margin-top: 40px;">
+    <h2>💰 Cost Per Customer (Estimated)</h2>
+    <div class="items">
+        <div class="item">
+            <div class="icon">🧠</div>
+            <div class="content">
+                <h4>LLM API Costs</h4>
+                <p>GPT-4o for conversation/research: ~$5-8/mo<br>Codex for coding tasks: ~$2-3/mo<br>Embeddings for RAG: ~$0.50/mo</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🎙️</div>
+            <div class="content">
+                <h4>ElevenLabs Voice</h4>
+                <p>Shared account, per-character usage: ~$3-5/mo per active customer</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">🖥️</div>
+            <div class="content">
+                <h4>Hosting</h4>
+                <p>Shared DigitalOcean: ~$2-4/mo per customer (amortized)<br>Individual droplet: ~$12-24/mo per customer</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="icon">📱</div>
+            <div class="content">
+                <h4>Social Media (Buffer)</h4>
+                <p>~$5/mo per customer if using Buffer. Free if manual approve flow.</p>
+            </div>
+        </div>
+    </div>
+    <p style="margin-top: 16px; padding: 12px; background: rgba(0,180,0,0.06); border: 1px solid rgba(0,180,0,0.15); border-radius: 6px; font-size: 0.85rem;">
+        <strong style="color: #0f0;">Estimated total cost per customer:</strong> $18-25/mo (shared hosting) or $30-45/mo (dedicated hosting)<br>
+        <strong style="color: #0f0;">Revenue per customer:</strong> $99/mo<br>
+        <strong style="color: #0f0;">Margin:</strong> 55-82% depending on hosting model
+    </p>
+</div>
+
+<!-- RECOMMENDED BUILD ORDER -->
+<div class="flow-section" style="margin-top: 40px;">
+    <h2>🔨 Recommended Build Order (Sprint Plan)</h2>
+    <div class="items" style="grid-template-columns: 1fr;">
+        <div class="item" style="border-left: 3px solid #b40000;">
+            <div class="content">
+                <h4>WEEK 1: Foundation</h4>
+                <p>1. Decide hosting architecture (shared vs. container vs. dedicated)<br>
+                2. Build Roadie Brain Bundle — package all brain systems into deployable folder<br>
+                3. Create Roadie SOUL.md + USER.md + HEARTBEAT.md templates<br>
+                4. Build provisioning script: form data → OpenClaw instance + Telegram bot</p>
+            </div>
+        </div>
+        <div class="item" style="border-left: 3px solid #ffa500;">
+            <div class="content">
+                <h4>WEEK 2: Core Skills</h4>
+                <p>1. Gmail OAuth multi-tenant (this unlocks 4+ skills)<br>
+                2. Playlist Pitching skill (the #1 seller)<br>
+                3. Show Booking skill (venue research + outreach)<br>
+                4. EPK Builder skill + hosting solution</p>
+            </div>
+        </div>
+        <div class="item" style="border-left: 3px solid #88f;">
+            <div class="content">
+                <h4>WEEK 3: Polish & Integrations</h4>
+                <p>1. Spotify API integration (public data analytics)<br>
+                2. Social media posting solution (Buffer or approve flow)<br>
+                3. Onboarding email automation<br>
+                4. Stripe webhook → auto-provisioning</p>
+            </div>
+        </div>
+        <div class="item" style="border-left: 3px solid #0f0;">
+            <div class="content">
+                <h4>WEEK 4: Beta Launch</h4>
+                <p>1. Internal testing — give 2-3 artists free Roadies<br>
+                2. Fix everything that breaks<br>
+                3. Subscription management (cancel/pause/dunning)<br>
+                4. GO LIVE for real customers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p style="text-align: center; color: #333; margin-top: 40px; font-size: 0.75rem;">INTERNAL DOCUMENT — Roadie AI System Map — Social Elite Marketing Group — Updated Mar 29, 2026</p>
+
+</body>
+</html>
