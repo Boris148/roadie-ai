@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing — Roadie AI</title>
-    <meta name="description" content="Choose your Roadie AI plan. From $200 setup. Your own AI artist manager that never sleeps.">
+    <meta name="description" content="$99/mo. Everything included. Your AI artist manager that sends emails, posts content, books shows, and works 24/7. No setup fee. Cancel anytime.">
     <meta property="og:title" content="Pricing — Roadie AI">
-    <meta property="og:description" content="Choose your Roadie AI plan that suits your needs and budget.">
+    <meta property="og:description" content="One plan. $99/mo. Everything included. No setup fee. Cancel anytime.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
         <div class="nav-brand">
             <a href="index.html" class="nav-logo"><img src="roadie-nav-logo.png" alt="Roadie AI" style="height: 90px; width: auto; margin: -22px 0;"></a>
-            
         </div>
         <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
             <span></span><span></span><span></span>
@@ -23,7 +22,7 @@
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="faq.html">FAQ</a>
-            <a href="purchase.html" class="nav-cta">Get Started</a>
+            <a href="purchase.html" class="nav-cta">Get Your Roadie</a>
         </div>
     </nav>
 
@@ -31,120 +30,157 @@
     <section class="page-hero">
         <div class="page-hero-content">
             <p class="section-tag">Simple Pricing</p>
-            <h1>Pick Your <span>Tier</span></h1>
-            <p>One-time setup. Optional monthly hosting. No commission on your music. No contracts. Cancel anytime.</p>
+            <h1>One Plan. <span>Everything.</span></h1>
+            <p>No tiers. No upsells. No setup fee. No commission. Cancel anytime.</p>
         </div>
     </section>
 
-    <!-- PRICING TIERS -->
+    <!-- SINGLE PLAN -->
     <section class="section">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <div class="pricing-grid" style="margin-bottom: 60px;">
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <div class="price-card featured" style="transform: none; padding: 48px 40px;">
+                <div class="tier-name" style="color: var(--red);">Your AI Artist Manager</div>
+                <div class="tier-price">$99<span style="font-size: 1rem; font-weight: 400; color: var(--gray);">/mo</span></div>
+                <div class="tier-note">No setup fee. Cancel anytime.</div>
 
-                <!-- STARTER -->
-                <div class="price-card">
-                    <div class="tier-name">Starter</div>
-                    <div class="tier-price">$200</div>
-                    <div class="tier-note">one-time setup</div>
-                    <div class="tier-cost" style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $29<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></div>
-                    <ul>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> AI Artist Manager</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Show Booking & Outreach</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Social Media Engine</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Merch & Finances</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Memory & Personality</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Hosted 24/7</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Telegram Access</li>
-                    </ul>
-                    <a href="purchase.html" class="btn-primary">Get Starter</a>
+                <p style="font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin: 32px 0 16px;">The 7 Pillars of Roadie</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; text-align: left; margin-bottom: 32px;">
+                    <div style="padding: 6px 0; font-size: 0.85rem; color: #bbb;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Email Outreach Engine</div>
+                    <div style="padding: 6px 0; font-size: 0.85rem; color: #bbb;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Social Media Autopilot</div>
+                    <div style="padding: 6px 0; font-size: 0.85rem; color: #bbb;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Show Booking Machine</div>
+                    <div style="padding: 6px 0; font-size: 0.85rem; color: #bbb;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Streaming Intelligence</div>
+                    <div style="padding: 6px 0; font-size: 0.85rem; color: #bbb;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Financial Command Center</div>
+                    <div style="padding: 6px 0; font-size: 0.85rem; color: #bbb;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Web Presence / EPK Builder</div>
+                    <div style="padding: 6px 0; font-size: 0.85rem; color: #bbb;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Proactive Daily Operations</div>
                 </div>
 
-                <!-- PRO (Featured) -->
-                <div class="price-card featured">
-                    <div class="badge">Most Popular</div>
-                    <div class="tier-name">Pro</div>
-                    <div class="tier-price">$500</div>
-                    <div class="tier-note">one-time setup</div>
-                    <div class="tier-cost" style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $49<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></div>
-                    <ul>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Everything in Starter</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Streaming Analytics</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Playlist Pitching</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Meta & YouTube Ads</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Release Planning</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Email Marketing</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9733;</span> Press Kit / EPK</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Career Memory</li>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Evolving Personality</li>
-                    </ul>
-                    <a href="purchase.html" class="btn-primary">Get Pro</a>
+                <p style="font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 12px;">Plus: All Integrations Included</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; text-align: left; margin-bottom: 32px;">
+                    <div style="padding: 4px 0; font-size: 0.8rem; color: #777;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Gmail Integration</div>
+                    <div style="padding: 4px 0; font-size: 0.8rem; color: #777;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Spotify Integration</div>
+                    <div style="padding: 4px 0; font-size: 0.8rem; color: #777;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Instagram & TikTok Posting</div>
+                    <div style="padding: 4px 0; font-size: 0.8rem; color: #777;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Google Calendar Sync</div>
+                    <div style="padding: 4px 0; font-size: 0.8rem; color: #777;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Career Memory & Personality</div>
+                    <div style="padding: 4px 0; font-size: 0.8rem; color: #777;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Morning Briefings</div>
+                    <div style="padding: 4px 0; font-size: 0.8rem; color: #777;"><span style="color: var(--red); margin-right: 8px;">&#10003;</span> 24/7 Telegram Access</div>
                 </div>
 
-                <!-- LABEL -->
-                <div class="price-card">
-                    <div class="tier-name">Label</div>
-                    <div class="tier-price">$1,000</div>
-                    <div class="tier-note">one-time setup</div>
-                    <div class="tier-cost" style="font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--red); margin-bottom: 24px;">+ $99<span style="font-size: 0.8rem; color: var(--gray);">/mo hosted</span></div>
-                    <ul>
-                        <li><span style="color: var(--red); margin-right: 8px;">&#10003;</span> Everything in Pro</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Custom Landing Pages</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Full Ad Management</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Contract Templates</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Sync Licensing Help</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Multi-Artist Support</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Festival Submissions</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Self-Evolving AI Brain</li>
-                        <li class="highlight"><span style="color: var(--red); margin-right: 8px;">&#9830;</span> Proactive Opportunities</li>
-                    </ul>
-                    <a href="purchase.html" class="btn-primary">Get Label</a>
+                <a href="purchase.html" class="btn-primary" style="display: block; text-align: center; padding: 18px; font-size: 1.1rem;">Get Your Roadie — $99/mo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADD-ONS -->
+    <section class="section" style="background: rgba(180,0,0,0.02);">
+        <div class="section-inner" style="text-align: center;">
+            <p class="section-tag">Power Up</p>
+            <h2>Optional <span style="color: var(--red);">Add-Ons</span></h2>
+            <p class="section-subtitle" style="margin-left: auto; margin-right: auto; text-align: center;">Supercharge your Roadie with these optional upgrades.</p>
+            <div class="addon-grid" style="max-width: 600px; margin: 30px auto 0;">
+                <div class="addon-card">
+                    <h4>Roadie Voice</h4>
+                    <div class="addon-price">+$20<span style="font-size: 0.8rem; font-weight: 400;">/mo</span></div>
+                    <p>Send and receive voice messages on Telegram with a branded AI voice. Talk to your Roadie like you'd talk to a real manager — hands-free, on the go.</p>
+                </div>
+                <div class="addon-card">
+                    <h4>Codex Brain</h4>
+                    <div class="addon-price">+$30<span style="font-size: 0.8rem; font-weight: 400;">/mo</span></div>
+                    <p>Roadie can write code, build websites, landing pages, EPKs, and automate workflows. Give your AI manager full coding ability to build what you need.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- LOCAL OPTION -->
-            <div style="max-width: 700px; margin: 0 auto 60px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 40px; text-align: center;">
+    <!-- VALUE COMPARISON -->
+    <section class="section stack-bg">
+        <div class="section-inner" style="text-align: center;">
+            <p class="section-tag">The Math</p>
+            <h2>What This Would Cost <span style="color: var(--red);">Without Roadie</span></h2>
+            <div class="stack-items">
+                <div class="stack-item"><span>Human Manager (15-20% commission)</span><span>$150-600/mo</span></div>
+                <div class="stack-item"><span>Virtual Assistant</span><span>$1,500-3,000/mo</span></div>
+                <div class="stack-item"><span>Social Media Manager</span><span>$1,500/mo</span></div>
+                <div class="stack-item"><span>Booking Agent (10-15% commission)</span><span>$300-500/mo</span></div>
+                <div class="stack-item"><span>All of the Above</span><span>$5,000-10,000/mo</span></div>
+            </div>
+            <div class="stack-total">
+                <span>Roadie — Everything. 24/7.</span>
+                <span>$99/mo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCAL INSTALL -->
+    <section class="section" style="background: var(--darker);">
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 48px 40px;">
                 <p class="section-tag">Prefer to Own It?</p>
-                <h2 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px;">Local Install — <span style="color: var(--red);">$350</span> One-Time</h2>
-                <p style="color: var(--gray); line-height: 1.7; margin-bottom: 24px;">We install Roadie directly on your Mac or PC. No monthly fees. You own it completely. Run it on your machine, your data stays with you. Perfect for the DIY artist who wants full control.</p>
-                <a href="purchase.html" class="btn-outline">Learn More</a>
+                <h2 style="font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px;">Local Install — <span style="color: var(--red);">$997</span> One-Time</h2>
+                <p style="color: var(--gray); line-height: 1.7; margin-bottom: 24px;">Same everything. Runs on your machine. Your data stays with you. No monthly fees. Perfect for the tech-savvy artist or label who wants full control.</p>
+                <a href="purchase.html" class="btn-outline">Get Local Install</a>
             </div>
+        </div>
+    </section>
 
-            <!-- ADD-ONS -->
-            <div style="max-width: 900px; margin: 0 auto 80px;">
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <p class="section-tag">Power-Ups</p>
-                    <h2 style="font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase;">Add-Ons</h2>
+    <!-- PRICING FAQ -->
+    <section class="section">
+        <div style="max-width: 750px; margin: 0 auto;">
+            <p class="section-tag" style="text-align: center;">Pricing FAQ</p>
+            <h2 style="font-family: 'Oswald', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; text-transform: uppercase; margin-bottom: 32px; text-align: center;">Common <span style="color: var(--red);">Questions</span></h2>
+            <div class="faq-accordion">
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Why only one plan?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>Because every artist deserves a full manager, not a watered-down version. Multiple tiers create confusion and friction. One product. Full power. Simple.</p>
+                    </div>
                 </div>
-                <div class="addon-grid">
-                    <div class="addon-card">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#129504;</div>
-                        <h4>Premium Brain</h4>
-                        <div class="addon-price">+$15/mo</div>
-                        <p>Better creative writing, smarter conversations. Powered by Sonnet.</p>
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Is there a setup fee?</span>
+                        <span class="faq-arrow">+</span>
                     </div>
-                    <div class="addon-card">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#9889;</div>
-                        <h4>Ultimate Brain</h4>
-                        <div class="addon-price">+$50/mo</div>
-                        <p>The best AI brain available. Deep reasoning, incredible personality. Opus-level.</p>
+                    <div class="faq-acc-a">
+                        <p>No. $99/mo is all you pay. We removed the setup fee because musicians are already stretched thin. The lower barrier to entry means more artists get the help they need.</p>
                     </div>
-                    <div class="addon-card">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#127908;</div>
-                        <h4>Voice Messages</h4>
-                        <div class="addon-price">+$20/mo</div>
-                        <p>Your Roadie talks back. Voice messages on Telegram via ElevenLabs.</p>
+                </div>
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Can I cancel anytime?</span>
+                        <span class="faq-arrow">+</span>
                     </div>
-                    <div class="addon-card">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#128270;</div>
-                        <h4>Priority Support</h4>
-                        <div class="addon-price">+$25/mo</div>
-                        <p>Direct line to the Social Elite team. Priority setup, tuning, and troubleshooting.</p>
+                    <div class="faq-acc-a">
+                        <p>Yes. No contracts. Cancel anytime. You keep all your data. We want you to stay because Roadie works, not because you're locked in.</p>
                     </div>
-                    <div class="addon-card">
-                        <div style="font-size: 1.5rem; margin-bottom: 8px;">&#128640;</div>
-                        <h4>Ad Management</h4>
-                        <div class="addon-price">+$30/mo</div>
-                        <p>Meta, YouTube, and TikTok ad campaigns fully managed by your AI. Targeting, creative, and optimization included.</p>
+                </div>
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What are the add-ons?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p><strong>Roadie Voice (+$20/mo):</strong> Send and receive voice messages on Telegram with a branded AI voice. Talk to your manager hands-free.<br><br><strong>Codex Brain (+$30/mo):</strong> Gives Roadie full coding ability — it can build websites, landing pages, EPKs, and automate workflows for you.</p>
+                    </div>
+                </div>
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What's the local install?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>$997 one-time. We install Roadie directly on your Mac or PC. Same features, same everything — it just runs on your machine instead of our servers. No monthly fees after that. Perfect for labels or privacy-focused artists.</p>
+                    </div>
+                </div>
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Does Roadie take a commission on my music?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>Never. $99/mo flat. No commission on your streams, shows, merch, or anything else. Your money is your money.</p>
                     </div>
                 </div>
             </div>
@@ -155,8 +191,8 @@
     <section class="cta-section">
         <div class="cta-content">
             <h2>Ready to Get <span>Your Manager</span>?</h2>
-            <p>Stop doing everything yourself. Let your AI handle the grind while you focus on the music.</p>
-            <a href="purchase.html" class="btn-primary">Get Started Now</a>
+            <p>$99/mo. Everything included. No setup fee. Cancel anytime.</p>
+            <a href="purchase.html" class="btn-primary">Get Your Roadie</a>
         </div>
     </section>
 

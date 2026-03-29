@@ -4,27 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ — Roadie AI</title>
-    <meta name="description" content="Everything you need to know about Roadie AI — your autonomous AI artist manager.">
+    <meta name="description" content="Everything you need to know about Roadie AI — your autonomous AI artist manager. $99/mo. Everything included.">
     <meta property="og:title" content="FAQ — Roadie AI">
     <meta property="og:description" content="Common questions about Roadie AI answered. How it works, pricing, privacy, and more.">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; cursor: pointer; transition: color 0.3s; }
-        .faq-question:hover { color: var(--red); }
-        .faq-question h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
-        .faq-question .faq-toggle { font-size: 1.5rem; color: var(--red); transition: transform 0.3s; flex-shrink: 0; margin-left: 16px; }
-        .faq-question.open .faq-toggle { transform: rotate(45deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
-        .faq-answer.open { max-height: 500px; padding-bottom: 24px; }
-        .faq-answer p { color: var(--gray); line-height: 1.8; font-size: 0.95rem; }
-    </style>
 </head>
 <body>
     <nav>
         <div class="nav-brand">
             <a href="index.html" class="nav-logo"><img src="roadie-nav-logo.png" alt="Roadie AI" style="height: 90px; width: auto; margin: -22px 0;"></a>
-            
         </div>
         <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
             <span></span><span></span><span></span>
@@ -34,7 +22,7 @@
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="faq.html">FAQ</a>
-            <a href="purchase.html" class="nav-cta">Get Started</a>
+            <a href="purchase.html" class="nav-cta">Get Your Roadie</a>
         </div>
     </nav>
 
@@ -52,117 +40,129 @@
     <!-- FAQ -->
     <section class="section" style="padding-top: 20px;">
         <div style="max-width: 750px; margin: 0 auto;">
+            <div class="faq-accordion">
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>What is Roadie?</h3>
-                    <span class="faq-toggle">+</span>
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What is Roadie?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>An autonomous AI artist manager. Not a chatbot — an operator. Roadie actually sends your emails, posts your content, books your shows, tracks your finances, and checks in with you every morning. It's like having a full-time manager for $99/mo.</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Roadie is your own AI artist manager. Not a chatbot — an autonomous operator that lives on Telegram and handles the business side of your music career 24/7. It books shows, manages your social media, tracks your finances, pitches playlists, plans releases, and checks in with you proactively. It's like having a full-time manager for a fraction of the cost.</p>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>How is this different from ChatGPT?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>ChatGPT forgets you every session and can't do anything outside the chat. Roadie has persistent memory of your entire career, connects to your actual accounts (Gmail, Spotify, Instagram, TikTok, Calendar), proactively checks in daily without being asked, develops its own personality, and actually executes tasks — sends real emails, posts real content, researches real venues.</p>
+                    </div>
                 </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What accounts does it connect to?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>Gmail (to send and receive emails), Spotify (to pull your streaming data), Instagram (to post content), TikTok (to post content), and Google Calendar (to manage your shows and deadlines). Roadie walks you through connecting everything in about 5 minutes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Will it post without my approval?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>Never. You approve everything before it goes out. Roadie drafts emails, creates posts, and prepares outreach — but nothing gets sent or published until you say go. It's your manager, not a rogue agent.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What genre does it work with?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>All genres. Hip hop, rock, country, EDM, R&B, pop, metal, indie, jazz — Roadie adapts to your specific situation, audience, and goals. It learns your voice and style and represents you authentically.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Can it really book shows?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>Yes. Roadie researches real venues in your target markets that book your genre, drafts professional outreach emails, sends them from your Gmail, follows up automatically, and manages your calendar. You review and approve everything before it goes out.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What happens in the first 10 minutes?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>Within 10 minutes of connecting your accounts, Roadie delivers: 5 real venues in your city that book your genre, outreach emails drafted and ready to send, your EPK/press page live and shareable, a full week's content calendar with captions, your Spotify data analyzed with actionable insights, and your financial tracker set up.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Is my data private?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>100% isolated. Your Roadie runs in its own environment with its own memory. No other artist can see your data, your conversations, your strategy, or anything else. Your data is yours alone.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Can I cancel?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>Anytime. No contracts. No cancellation fees. You keep all your data. We want you to stay because Roadie works, not because you're locked in.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What AI model does it use?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>GPT-4o by default — a powerful, fast AI model perfect for management tasks. Upgradeable to more advanced models if you want deeper reasoning and better creative writing.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Do I need to be tech-savvy?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>No. If you can text, you can use Roadie. It lives on Telegram — you just talk to it like you'd talk to a real manager. Send it a message, get things done. Roadie walks you through connecting your accounts step by step.</p>
+                    </div>
+                </div>
+
+                <div class="faq-acc-item">
+                    <div class="faq-acc-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>What if I want to self-host?</span>
+                        <span class="faq-arrow">+</span>
+                    </div>
+                    <div class="faq-acc-a">
+                        <p>$997 one-time local install. Same everything — same features, same AI, same integrations. It just runs on your machine instead of our servers. No monthly fees. Your data stays entirely on your hardware. Perfect for labels or privacy-focused artists.</p>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>How does it actually work?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>You talk to your Roadie through Telegram — just like texting a friend. Tell it about your goals, upcoming shows, music links, and it takes it from there. It doesn't wait for you to ask — it proactively checks in, reminds you about deadlines, drafts venue outreach emails, plans your social content, and brings you opportunities. The more you use it, the smarter it gets.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>What's the difference between the tiers?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p><strong>Starter ($200 + $29/mo):</strong> Core AI manager — show booking, social media, merch tracking, financial overview, fan engagement. Perfect for artists who mainly play live.<br><br><strong>Pro ($500 + $49/mo):</strong> Everything in Starter plus streaming analytics, playlist pitching, Meta/YouTube ads, release planning, email marketing, and press kit generation. For artists serious about growing online.<br><br><strong>Label ($1,000 + $99/mo):</strong> The full suite. Everything in Pro plus contract templates, sync licensing help, multi-artist management, festival submissions, and a self-evolving AI brain that dreams, reflects, and brings you opportunities proactively.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>Can I try before I buy?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>We're working on a demo experience. In the meantime, reach out to us and we'll walk you through exactly what your Roadie would look like, tailored to your music and goals. No pressure, no sales pitch — just a real conversation about whether this is right for you.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>What if I want to self-host?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>We offer a local install option for $350 one-time. We set up Roadie directly on your Mac or PC. No monthly fees. You own it completely. Your data stays on your machine. Perfect for the privacy-conscious or tech-savvy artist who wants full control.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>Is my data private?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>100%. Your Roadie is completely isolated — it runs in its own environment with its own memory. No other artist's AI can see your data, and we never share or sell your information. Your conversations, your music, your strategy — it's all yours.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>What AI model does it use?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Roadie runs on Gemini 2.5 Pro by default — a powerful, fast AI model perfect for management tasks. If you want even better creative writing and deeper reasoning, you can upgrade to our Premium Brain (Sonnet) or Ultimate Brain (Opus) add-ons. Think of it like choosing the engine in a car — the base model is great, the upgrades are incredible.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>Can it actually book shows?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes. Roadie researches venues in your target markets, drafts professional outreach emails, follows up automatically, and tracks responses. It learns which venues are a good fit for your genre and audience size. You review and approve before anything gets sent — it's your manager, not a rogue agent.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>How is this different from ChatGPT?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>ChatGPT forgets you every conversation. Roadie remembers everything — your shows, your goals, your style, your contacts, your entire career history. It has its own personality that evolves over time. It checks in proactively without you asking. It's not a tool you use — it's a manager that works for you 24/7. That's the difference between a search engine and a teammate.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>Does it work with Spotify, Apple Music, etc?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Roadie can analyze your streaming data, help you develop playlist pitching strategies, plan release rollouts optimized for algorithmic playlists, and track your growth across platforms. It helps you make data-driven decisions about your music career.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">
-                    <h3>What if I cancel?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>No contracts. Cancel anytime. If you're on a hosted plan, your Roadie stays active until the end of your billing period. You keep all your data and conversation history. We'll even help you export everything if you want. No hard feelings — we want you to stay because it works, not because you're locked in.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -173,19 +173,21 @@
             <h2 style="font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; text-transform: uppercase; margin-bottom: 16px;">Still Have Questions?</h2>
             <p style="color: var(--gray); margin-bottom: 12px;">Email us: <a href="mailto:boris@socialelitemarketinggroup.com" style="color: var(--red);">boris@socialelitemarketinggroup.com</a></p>
             <p style="color: var(--gray); margin-bottom: 32px;">Or just get started — your Roadie will answer everything else.</p>
-            <a href="purchase.html" class="btn-primary">Get Your Roadie</a>
+            <a href="purchase.html" class="btn-primary">Get Your Roadie — $99/mo</a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer style="padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04);">
-        <p style="font-size: 0.75rem; color: #333; letter-spacing: 1px;">© 2026 Roadie AI by Social Elite Marketing Group. All rights reserved.</p>
-        <div style="margin-top: 12px; display: flex; justify-content: center; gap: 20px;">
-            <a href="index.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">Home</a>
-            <a href="pricing.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">Pricing</a>
-            <a href="about.html" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">About</a>
-            <a href="mailto:boris@socialelitemarketinggroup.com" style="font-size: 0.7rem; color: #444; text-decoration: none; letter-spacing: 1px; text-transform: uppercase;">Contact</a>
+    <footer>
+        <div style="text-align: center; margin-bottom: 16px;"><img src="roadie-hero-logo.png" alt="Roadie AI" style="height: 100px; width: auto; opacity: 0.7;"></div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+            <a href="purchase.html">Get Started</a>
         </div>
+        <p>&copy; 2026 Roadie AI &middot; A <a href="https://socialelitemarketinggroup.com">Social Elite</a> Product &middot; Built for the independent music grind</p>
     </footer>
 </body>
 </html>
